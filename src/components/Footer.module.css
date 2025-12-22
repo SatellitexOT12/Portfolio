@@ -1,0 +1,58 @@
+.footer {
+  background: #2d3748;
+  color: white;
+  padding: 3rem 1rem;
+  margin-top: 5rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.content {
+  margin-bottom: 2rem;
+}
+
+.content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.content p {
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.links a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: #764ba2;
+}
+
+.copyright {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .links {
+    gap: 1rem;
+  }
+}

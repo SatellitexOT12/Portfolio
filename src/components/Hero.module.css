@@ -1,0 +1,67 @@
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10rem 1rem;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 3.5rem;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin: 0 0 2rem 0;
+  opacity: 0.95;
+  font-weight: 300;
+}
+
+.cta {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cta a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 1rem;
+    min-height: 70vh;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+}
