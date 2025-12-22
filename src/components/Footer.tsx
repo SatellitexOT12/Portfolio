@@ -16,7 +16,7 @@ export default function Footer() {
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
-            <a href="mailto:your@email.com">Email</a>
+            <a href="mailto:garciaoscargfa@gmail.com">Email</a>
           </div>
         </div>
         <p className={styles.copyright}>

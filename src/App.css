@@ -14,6 +14,19 @@ body {
   background: white;
 }
 
+/* Prevent horizontal overflow on small screens */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure images and media don't exceed their containers */
+img, picture, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .app {
   display: flex;
   flex-direction: column;

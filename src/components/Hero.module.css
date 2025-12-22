@@ -65,3 +65,26 @@
     font-size: 1.1rem;
   }
 }
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .hero {
+    padding: 3rem 0.75rem;
+    min-height: 60vh;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta {
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+  }
+}

@@ -32,6 +32,21 @@
   flex-wrap: wrap;
 }
 
+/* Stack links vertically on very small screens for larger hit targets */
+@media (max-width: 480px) {
+  .links {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .content h3 {
+    font-size: 1.2rem;
+  }
+  .content p {
+    font-size: 0.95rem;
+  }
+}
+
 .links a {
   color: #667eea;
   text-decoration: none;

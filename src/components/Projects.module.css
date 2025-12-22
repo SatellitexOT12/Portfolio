@@ -85,3 +85,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .projects {
+    padding: 3rem 0.75rem;
+  }
+
+  .card {
+    padding: 1.2rem;
+  }
+
+  .projectTitle {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+}

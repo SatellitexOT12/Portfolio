@@ -70,3 +70,27 @@
     font-size: 2rem;
   }
 }
+
+@media (max-width: 480px) {
+  .about {
+    padding: 3rem 0.75rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .text p {
+    font-size: 0.95rem;
+  }
+
+  .skills {
+    padding: 1rem;
+  }
+
+  .skill {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
