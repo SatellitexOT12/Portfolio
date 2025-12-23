@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section id="hero" className={styles.hero}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Welcome to My World</h1>
+        <h1 className={styles.title}>Welcome to My Portfolio</h1>
         <p className={styles.subtitle}>
           Full Stack Developer | Creative Problem Solver | Tech Enthusiast
         </p>
