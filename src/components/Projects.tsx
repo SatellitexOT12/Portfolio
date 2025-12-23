@@ -5,51 +5,59 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
+  image?: string;
   link: string;
 }
 
 const projectsData: Project[] = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce application with product catalog, shopping cart, and payment integration.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    link: '#',
+    title: 'University Incident Management System',
+    description: 'A full-stack university maintenance management system designed to streamline incident reporting and centralize technical support workflows.',
+    technologies: ['Django', 'JavaScript', 'PostgreSQL', 'Bootstrap'],
+    link: 'https://github.com/SatellitexOT12/ProyectoMantenimientoUCI',
+    image: '/src/assets/img/incident-management.png',
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: 'A collaborative task management tool with real-time updates and team collaboration features.',
-    technologies: ['React', 'Firebase', 'TypeScript', 'Tailwind CSS'],
-    link: '#',
+    title: 'MOOC Course platform',
+    description: 'MOOC course platform with registration system, user authentication, and data export to CSV.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Django REST Framework', 'API Integration'],
+    link: 'https://github.com/SatellitexOT12/moc',
+    image: '/src/assets/img/mooc-platform.jpg',
   },
   {
     id: 3,
-    title: 'Weather Dashboard',
-    description: 'A weather application showing real-time forecasts with interactive maps and detailed analytics.',
-    technologies: ['React', 'API Integration', 'Chart.js', 'Vite'],
+    title: 'Personal Professional Portfolio',
+    description: 'A high-performance personal portfolio designed with a mobile-first approach, focusing on clean architecture, optimized asset loading, and responsive UI components.',
+    technologies: ['React',  'TypeScript','Vite' ,'CSS Modules'],
     link: '#',
+    image: '/src/assets/img/personal-portfolio.png',
   },
   {
     id: 4,
-    title: 'Social Media Feed',
-    description: 'A social media platform featuring user authentication, posts, comments, and real-time notifications.',
-    technologies: ['React', 'GraphQL', 'PostgreSQL', 'WebSockets'],
-    link: '#',
+    title: "Death's Challenge",
+    description: 'A 3D parkour platformer developed in Unreal Engine for the Global Game Jam 2024, featuring custom assets modeled in Blender and fluid movement mechanics.',
+    technologies: ['Unreal Engine', 'Blender'],
+    link: 'https://globalgamejam.org/games/2024/deaths-challenge-2',
+    image: '/src/assets/img/deaths-challenge.png',
   },
   {
     id: 5,
-    title: 'Blog Platform',
-    description: 'A markdown-based blog platform with search functionality, categories, and reader analytics.',
-    technologies: ['React', 'Next.js', 'Markdown', 'SEO'],
-    link: '#',
+    title: 'Orbital Shield',
+    description: 'A 2D side-scroller developed in Unreal Engine for the Global Game Jam 2025, featuring a dynamic state-switching shield mechanic for energy absorption and combat.',
+    technologies: ['Unreal Engine', 'Aseprite'],
+    link: 'https://globalgamejam.org/games/2025/orbital-shield-frostaras-adventures-2-0',
+    image: '/src/assets/img/orbital-shield.png',
+    
   },
   {
     id: 6,
-    title: 'Fitness Tracker',
-    description: 'A mobile-friendly fitness tracking application with progress charts and workout recommendations.',
-    technologies: ['React Native', 'Firebase', 'Charts', 'APIs'],
-    link: '#',
+    title: 'AR Ships (Portada Project)',
+    description: 'An immersive AR mobile application built with Unity and Vuforia Engine to visualize and preserve naval heritage through interactive 3D historical ship models.',
+    technologies: ['Unity', 'Vuforia Engine', 'Blender', 'C#'],
+    link: 'https://github.com/SatellitexOT12/RA_Barcos',
+    image: '/src/assets/img/ar-ships.jpg',
   },
 ];
 
@@ -60,20 +68,29 @@ export default function Projects() {
         <h2 className={styles.title}>My Projects</h2>
         <div className={styles.grid}>
           {projectsData.map((project) => (
-            <div key={project.id} className={styles.card}>
-              <h3 className={styles.projectTitle}>{project.title}</h3>
-              <p className={styles.description}>{project.description}</p>
-              <div className={styles.technologies}>
-                {project.technologies.map((tech, index) => (
-                  <span key={index} className={styles.tech}>
-                    {tech}
-                  </span>
-                ))}
+            <article key={project.id} className={styles.card}>
+              <img
+                src={project.image ?? 'https://via.placeholder.com/800x450'}
+                alt={`${project.title} thumbnail`}
+                className={styles.thumbnail}
+              />
+
+              <div className={styles.cardBody}>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.description}>{project.description}</p>
+                <div className={styles.technologies}>
+                  {project.technologies.map((tech, index) => (
+                    <span key={index} className={styles.tech}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <a href={project.link} className={styles.link}>
+                  View Project →
+                </a>
               </div>
-              <a href={project.link} className={styles.link}>
-                View Project →
-              </a>
-            </div>
+            </article>
           ))}
         </div>
       </div>
