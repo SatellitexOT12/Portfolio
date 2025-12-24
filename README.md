@@ -112,11 +112,6 @@ The site can be easily deployed to:
 - **CSS Modules** - Component-scoped styling
 - **HTML5** - Semantic markup
 
-## 📝 Notes
-
-- The projects data is currently using placeholder information. Replace with your actual projects.
-- Social media links in the footer should be updated with your actual profiles.
-- Consider adding a form library (like Formik or React Hook Form) if you want to add a contact form.
 
 ## 📄 License
 
