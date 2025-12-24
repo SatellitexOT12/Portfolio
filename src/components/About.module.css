@@ -1,6 +1,7 @@
 .about {
   padding: 5rem 1rem;
-  background: #f8f9fa;
+  background: var(--secondary-bg);
+  transition: background-color 0.3s ease;
 }
 
 .container {
@@ -12,8 +13,9 @@
   font-size: 2.5rem;
   margin-bottom: 3rem;
   text-align: center;
-  color: #333;
+  color: var(--text-color);
   font-weight: 700;
+  transition: color 0.3s ease;
 }
 
 .content {
@@ -24,8 +26,9 @@
 }
 
 .text {
-  color: #555;
+  color: var(--text-secondary);
   line-height: 1.8;
+  transition: color 0.3s ease;
 }
 
 .text p {
@@ -34,16 +37,18 @@
 }
 
 .skills {
-  background: white;
+  background: var(--bg-color);
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px var(--shadow-color);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skills h3 {
   margin-top: 0;
-  color: #667eea;
+  color: var(--primary-color);
   font-size: 1.3rem;
+  transition: color 0.3s ease;
 }
 
 .skillCategory {
@@ -51,15 +56,16 @@
 }
 
 .categoryTitle {
-  color: #667eea;
+  color: var(--primary-color);
   font-size: 0.95rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0 0 1rem 0;
-  border-bottom: 2px solid #667eea;
+  border-bottom: 2px solid var(--primary-color);
   padding-bottom: 0.5rem;
   display: inline-block;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .skillsList {
@@ -69,21 +75,21 @@
 }
 
 .skill {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: default;
-  transition: all 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+  transition: all 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .skill:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 @media (max-width: 768px) {

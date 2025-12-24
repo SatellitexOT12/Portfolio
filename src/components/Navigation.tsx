@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './Navigation.module.css';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,9 +19,6 @@ export default function Navigation() {
     <nav className={styles.navbar}>
       <div className={styles.container}>
         <div className={styles.logo}>Portfolio</div>
-        <button className={styles.menuToggle} onClick={toggleMenu}>
-          ☰
-        </button>
         <ul className={`${styles.navMenu} ${isOpen ? styles.active : ''}`}>
           <li>
             <button onClick={() => scrollToSection('hero')} className={styles.navLink}>
@@ -43,6 +41,12 @@ export default function Navigation() {
             </button>
           </li>
         </ul>
+        <div className={styles.navActions}>
+          <ThemeToggle />
+          <button className={styles.menuToggle} onClick={toggleMenu}>
+            ☰
+          </button>
+        </div>
       </div>
     </nav>
   );
