@@ -16,7 +16,7 @@ const projectsData: Project[] = [
     description: 'A full-stack university maintenance management system designed to streamline incident reporting and centralize technical support workflows.',
     technologies: ['Django', 'JavaScript', 'PostgreSQL', 'Bootstrap'],
     link: 'https://github.com/SatellitexOT12/ProyectoMantenimientoUCI',
-    image: 'incident-management.png',
+    image: 'incident-management.webp',
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const projectsData: Project[] = [
     description: 'MOOC course platform with registration system, user authentication, and data export to CSV.',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Django REST Framework', 'API Integration'],
     link: 'https://github.com/SatellitexOT12/moc',
-    image: 'mooc-platform.jpg',
+    image: 'mooc-platform.webp',
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const projectsData: Project[] = [
     description: 'A high-performance personal portfolio designed with a mobile-first approach, focusing on clean architecture, optimized asset loading, and responsive UI components.',
     technologies: ['React',  'TypeScript','Vite' ,'CSS Modules'],
     link: 'https://github.com/SatellitexOT12/Portfolio',
-    image: 'personal-portfolio.png',
+    image: 'personal-portfolio.webp',
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const projectsData: Project[] = [
     description: 'A 3D parkour platformer developed in Unreal Engine for the Global Game Jam 2024, featuring custom assets modeled in Blender and fluid movement mechanics.',
     technologies: ['Unreal Engine', 'Blender'],
     link: 'https://globalgamejam.org/games/2024/deaths-challenge-2',
-    image: 'deaths-challenge.png',
+    image: 'deaths-challenge.webp',
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ const projectsData: Project[] = [
     description: 'A 2D side-scroller developed in Unreal Engine for the Global Game Jam 2025, featuring a dynamic state-switching shield mechanic for energy absorption and combat.',
     technologies: ['Unreal Engine', 'Aseprite'],
     link: 'https://globalgamejam.org/games/2025/orbital-shield-frostaras-adventures-2-0',
-    image: 'orbital-shield.png',
+    image: 'orbital-shield.webp',
     
   },
   {
