@@ -16,7 +16,7 @@ const projectsData: Project[] = [
     description: 'A full-stack university maintenance management system designed to streamline incident reporting and centralize technical support workflows.',
     technologies: ['Django', 'JavaScript', 'PostgreSQL', 'Bootstrap'],
     link: 'https://github.com/SatellitexOT12/ProyectoMantenimientoUCI',
-    image: '/src/assets/img/incident-management.png',
+    image: '/img/incident-management.png',
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const projectsData: Project[] = [
     description: 'MOOC course platform with registration system, user authentication, and data export to CSV.',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Django REST Framework', 'API Integration'],
     link: 'https://github.com/SatellitexOT12/moc',
-    image: '/src/assets/img/mooc-platform.jpg',
+    image: '/img/mooc-platform.jpg',
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const projectsData: Project[] = [
     description: 'A high-performance personal portfolio designed with a mobile-first approach, focusing on clean architecture, optimized asset loading, and responsive UI components.',
     technologies: ['React',  'TypeScript','Vite' ,'CSS Modules'],
     link: '#',
-    image: '/src/assets/img/personal-portfolio.png',
+    image: '/img/personal-portfolio.png',
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const projectsData: Project[] = [
     description: 'A 3D parkour platformer developed in Unreal Engine for the Global Game Jam 2024, featuring custom assets modeled in Blender and fluid movement mechanics.',
     technologies: ['Unreal Engine', 'Blender'],
     link: 'https://globalgamejam.org/games/2024/deaths-challenge-2',
-    image: '/src/assets/img/deaths-challenge.png',
+    image: '/img/deaths-challenge.png',
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ const projectsData: Project[] = [
     description: 'A 2D side-scroller developed in Unreal Engine for the Global Game Jam 2025, featuring a dynamic state-switching shield mechanic for energy absorption and combat.',
     technologies: ['Unreal Engine', 'Aseprite'],
     link: 'https://globalgamejam.org/games/2025/orbital-shield-frostaras-adventures-2-0',
-    image: '/src/assets/img/orbital-shield.png',
+    image: '/img/orbital-shield.png',
     
   },
   {
@@ -57,7 +57,7 @@ const projectsData: Project[] = [
     description: 'An immersive AR mobile application built with Unity and Vuforia Engine to visualize and preserve naval heritage through interactive 3D historical ship models.',
     technologies: ['Unity', 'Vuforia Engine', 'Blender', 'C#'],
     link: 'https://github.com/SatellitexOT12/RA_Barcos',
-    image: '/src/assets/img/ar-ships.jpg',
+    image: '/img/ar-ships.jpg',
   },
 ];
 
