@@ -31,7 +31,7 @@ const projectsData: Project[] = [
     title: 'Personal Professional Portfolio',
     description: 'A high-performance personal portfolio designed with a mobile-first approach, focusing on clean architecture, optimized asset loading, and responsive UI components.',
     technologies: ['React',  'TypeScript','Vite' ,'CSS Modules'],
-    link: '#',
+    link: 'https://github.com/SatellitexOT12/Portfolio',
     image: 'personal-portfolio.png',
   },
   {
