@@ -57,7 +57,7 @@ const projectsData: Project[] = [
     description: 'An immersive AR mobile application built with Unity and Vuforia Engine to visualize and preserve naval heritage through interactive 3D historical ship models.',
     technologies: ['Unity', 'Vuforia Engine', 'Blender', 'C#'],
     link: 'https://github.com/SatellitexOT12/RA_Barcos',
-    image: 'ar-ships.jpg',
+    image: 'ar-ships.webp',
   },
 ];
 
