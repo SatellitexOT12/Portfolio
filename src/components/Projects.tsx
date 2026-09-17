@@ -28,14 +28,22 @@ const projectsData: Project[] = [
   },
   {
     id: 3,
+    title: 'MiniNabi',
+    description: 'A modern storefront for a handcrafted dessert brand, focused on premium product presentation, mobile-friendly browsing, and a clean ordering experience.',
+    technologies: ['React', 'TypeScript', 'Vite', 'CSS Modules', 'E-commerce'],
+    link: 'https://mininabi.qzz.io/',
+    image: 'https://vfomcuyjibpbkistjhpd.supabase.co/storage/v1/object/public/pics/LogoMN.webp',
+  },
+  {
+    id: 4,
     title: 'Personal Professional Portfolio',
     description: 'A high-performance personal portfolio designed with a mobile-first approach, focusing on clean architecture, optimized asset loading, and responsive UI components.',
-    technologies: ['React',  'TypeScript','Vite' ,'CSS Modules'],
+    technologies: ['React', 'TypeScript', 'Vite', 'CSS Modules'],
     link: 'https://github.com/SatellitexOT12/Portfolio',
     image: 'personal-portfolio.webp',
   },
   {
-    id: 4,
+    id: 5,
     title: "Death's Challenge",
     description: 'A 3D parkour platformer developed in Unreal Engine for the Global Game Jam 2024, featuring custom assets modeled in Blender and fluid movement mechanics.',
     technologies: ['Unreal Engine', 'Blender'],
@@ -43,17 +51,16 @@ const projectsData: Project[] = [
     image: 'deaths-challenge.webp',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Orbital Shield',
     description: 'A 2D side-scroller developed in Unreal Engine for the Global Game Jam 2025, featuring a dynamic state-switching shield mechanic for energy absorption and combat.',
     technologies: ['Unreal Engine', 'Aseprite'],
     link: 'https://globalgamejam.org/games/2025/orbital-shield-frostaras-adventures-2-0',
     image: 'orbital-shield.webp',
-    
   },
   {
-    id: 6,
-    title: 'AR Ships (Portada Project)',
+    id: 7,
+    title: 'AR Ships (Capstone Project)',
     description: 'An immersive AR mobile application built with Unity and Vuforia Engine to visualize and preserve naval heritage through interactive 3D historical ship models.',
     technologies: ['Unity', 'Vuforia Engine', 'Blender', 'C#'],
     link: 'https://github.com/SatellitexOT12/RA_Barcos',
@@ -86,7 +93,7 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <a href={project.link} className={styles.link}>
+                <a href={project.link} className={styles.link} target="_blank" rel="noreferrer">
                   View Project →
                 </a>
               </div>

@@ -8,28 +8,24 @@ export default function About() {
         <div className={styles.content}>
           <div className={styles.text}>
             <p>
-              I am a final-year undergraduate student pursuing a degree in Informatics  
-              Sciences Engineering at the Universidad de Ciencias Informáticas (UCI) in Cuba. 
-              My academic trajectory is defined by a strong foundation in software engineering, 
-              with a primary focus on scalable Web Development and Agile project management using Scrum.
+              I am a Software Engineer and graduate of the Universidad de Ciencias Informáticas (UCI) in Cuba,
+              where I completed my degree in Informatics Sciences Engineering. My academic and professional path has
+              been shaped by a strong foundation in software engineering, with a focus on scalable web development,
+              product thinking, and collaborative delivery.
             </p>
             <p>
-              I possess robust Full-Stack capabilities, specializing in building responsive applications 
-              using Python (Django) and React, integrated with relational databases such as PostgreSQL. 
-              My background allows me to design efficient backend architectures while delivering intuitive 
-              frontend experiences.
+              I have hands-on experience building full-stack applications using React, TypeScript, Python, Django,
+              and PostgreSQL. I enjoy working across the entire development lifecycle, from designing backend
+              architecture and APIs to creating responsive, user-centered interfaces that are efficient and maintainable.
             </p>
             <p>
-              In addition to web engineering, I have a diverse technical background in interactive media. 
-              I am currently developing an Augmented Reality (AR) thesis project using Unity and C#, and 
-              I have extensive experience in game development with Unreal Engine. This multidisciplinary 
-              experience, reinforced by my participation in two Global Game Jams, has sharpened my 
-              problem-solving skills and my ability to adapt to complex technical environments.
+              In addition to web engineering, I bring experience in interactive media and game development with Unity
+              and Unreal Engine, including participation in Global Game Jams. That multidisciplinary background has
+              strengthened my problem-solving mindset, creativity, and adaptability in fast-paced technical environments.
             </p>
             <p>
-              Beyond my technical skills, I am an effective communicator and a proactive team player. 
-              I thrive in collaborative settings and am committed to continuous learning and professional growth. 
-              I am eager to contribute my skills and enthusiasm to innovative projects in the tech industry.
+              I am a proactive communicator and a reliable team player with a strong interest in building meaningful
+              digital products and continuing to grow as a professional in software development and technology.
             </p>
           </div>
           <div className={styles.skills}>
