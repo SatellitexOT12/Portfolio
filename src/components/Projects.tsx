@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './Projects.module.css';
 
 interface Project {
@@ -13,7 +14,8 @@ const projectsData: Project[] = [
   {
     id: 1,
     title: 'University Incident Management System',
-    description: 'A full-stack university maintenance management system designed to streamline incident reporting and centralize technical support workflows.',
+    description:
+      'A full-stack university maintenance management system designed to streamline incident reporting and centralize technical support workflows.',
     technologies: ['Django', 'JavaScript', 'PostgreSQL', 'Bootstrap'],
     link: 'https://github.com/SatellitexOT12/ProyectoMantenimientoUCI',
     image: 'incident-management.webp',
@@ -29,7 +31,8 @@ const projectsData: Project[] = [
   {
     id: 3,
     title: 'MiniNabi',
-    description: 'A modern storefront for a handcrafted dessert brand, focused on premium product presentation, mobile-friendly browsing, and a clean ordering experience.',
+    description:
+      'A modern storefront for a handcrafted dessert brand, focused on premium product presentation, mobile-friendly browsing, and a clean ordering experience.',
     technologies: ['React', 'TypeScript', 'Vite', 'CSS Modules', 'E-commerce'],
     link: 'https://mininabi.qzz.io/',
     image: 'https://vfomcuyjibpbkistjhpd.supabase.co/storage/v1/object/public/pics/LogoMN.webp',
@@ -37,7 +40,8 @@ const projectsData: Project[] = [
   {
     id: 4,
     title: 'Personal Professional Portfolio',
-    description: 'A high-performance personal portfolio designed with a mobile-first approach, focusing on clean architecture, optimized asset loading, and responsive UI components.',
+    description:
+      'A high-performance personal portfolio designed with a mobile-first approach, focusing on clean architecture, optimized asset loading, and responsive UI components.',
     technologies: ['React', 'TypeScript', 'Vite', 'CSS Modules'],
     link: 'https://github.com/SatellitexOT12/Portfolio',
     image: 'personal-portfolio.webp',
@@ -45,7 +49,8 @@ const projectsData: Project[] = [
   {
     id: 5,
     title: "Death's Challenge",
-    description: 'A 3D parkour platformer developed in Unreal Engine for the Global Game Jam 2024, featuring custom assets modeled in Blender and fluid movement mechanics.',
+    description:
+      'A 3D parkour platformer developed in Unreal Engine for the Global Game Jam 2024, featuring custom assets modeled in Blender and fluid movement mechanics.',
     technologies: ['Unreal Engine', 'Blender'],
     link: 'https://globalgamejam.org/games/2024/deaths-challenge-2',
     image: 'deaths-challenge.webp',
@@ -53,7 +58,8 @@ const projectsData: Project[] = [
   {
     id: 6,
     title: 'Orbital Shield',
-    description: 'A 2D side-scroller developed in Unreal Engine for the Global Game Jam 2025, featuring a dynamic state-switching shield mechanic for energy absorption and combat.',
+    description:
+      'A 2D side-scroller developed in Unreal Engine for the Global Game Jam 2025, featuring a dynamic state-switching shield mechanic for energy absorption and combat.',
     technologies: ['Unreal Engine', 'Aseprite'],
     link: 'https://globalgamejam.org/games/2025/orbital-shield-frostaras-adventures-2-0',
     image: 'orbital-shield.webp',
@@ -61,45 +67,110 @@ const projectsData: Project[] = [
   {
     id: 7,
     title: 'AR Ships (Capstone Project)',
-    description: 'An immersive AR mobile application built with Unity and Vuforia Engine to visualize and preserve naval heritage through interactive 3D historical ship models.',
+    description:
+      'An immersive AR mobile application built with Unity and Vuforia Engine to visualize and preserve naval heritage through interactive 3D historical ship models.',
     technologies: ['Unity', 'Vuforia Engine', 'Blender', 'C#'],
     link: 'https://github.com/SatellitexOT12/RA_Barcos',
     image: 'ar-ships.webp',
   },
 ];
 
+/* YEAR: real for the jam entries (stated in their copy); 20XX is the
+   marked placeholder where no year exists in the source truth. */
+const YEARS: Record<number, string> = { 5: '2024', 6: '2025' };
+
+/* ROLE: every listed module is Oscar's delivered work. */
+const ROLE = 'Developer';
+
+/* Fallback tile initials — no external placeholder ever renders. */
+function initialsOf(title: string): string {
+  return title
+    .split(/\s+/)
+    .map((word) => word.charAt(0))
+    .join('')
+    .slice(0, 3)
+    .toUpperCase();
+}
+
 export default function Projects() {
+  const [failed, setFailed] = useState<Set<number>>(() => new Set());
+
+  const markFailed = (id: number) => {
+    setFailed((prev) => {
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+  };
+
   return (
-    <section id="projects" className={styles.projects}>
-      <div className={styles.container}>
-        <h2 className={styles.title}>My Projects</h2>
-        <div className={styles.grid}>
-          {projectsData.map((project) => (
-            <article key={project.id} className={styles.card}>
-              <img
-                src={project.image ?? 'https://via.placeholder.com/800x450'}
-                alt={`${project.title} thumbnail`}
-                className={styles.thumbnail}
-              />
+    <section id="projects" className={`${styles.projects} head-rule`}>
+      <span className={styles.edgeLabel} aria-hidden="true">
+        MESH · DENSE
+      </span>
+      <div className={styles.head}>
+        <h2 className={styles.title}>Projects</h2>
+        <p className={styles.meta}>{String(projectsData.length).padStart(2, '0')} · Selected work</p>
+      </div>
 
-              <div className={styles.cardBody}>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.description}>{project.description}</p>
-                <div className={styles.technologies}>
-                  {project.technologies.map((tech, index) => (
-                    <span key={index} className={styles.tech}>
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <a href={project.link} className={styles.link} target="_blank" rel="noreferrer">
-                  View Project →
-                </a>
+      <div className={styles.grid}>
+        {projectsData.map((project, i) => (
+          <article key={project.id} className={styles.card}>
+            <a
+              className={styles.cardLink}
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${project.title}`}
+            >
+              <div className={styles.media}>
+                {project.image && !failed.has(project.id) ? (
+                  <img
+                    className={styles.thumb}
+                    src={project.image}
+                    alt={`Screenshot of ${project.title}`}
+                    width={1600}
+                    height={900}
+                    loading={i < 3 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    onError={() => markFailed(project.id)}
+                  />
+                ) : (
+                  <div className={styles.fallback} aria-hidden="true">
+                    <span className={styles.fallbackNum}>{String(i + 1).padStart(2, '0')}</span>
+                    <strong className={styles.fallbackInitials}>{initialsOf(project.title)}</strong>
+                  </div>
+                )}
               </div>
-            </article>
-          ))}
-        </div>
+
+              <div className={styles.body}>
+                <div className={styles.topRow}>
+                  <h3 className={styles.name}>{project.title}</h3>
+                  <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <p className={styles.desc}>{project.description}</p>
+                <ul className={styles.techList}>
+                  {project.technologies.map((tech) => (
+                    <li key={tech} className={styles.tech}>
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+                <div className={styles.foot}>
+                  <span className={styles.spec}>
+                    {YEARS[project.id] ?? '20XX'} · {ROLE}
+                  </span>
+                  <span className={styles.action}>
+                    Open
+                    <svg className={styles.arrow} width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                      <path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </article>
+        ))}
       </div>
     </section>
   );

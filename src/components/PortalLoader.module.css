@@ -1,0 +1,61 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  transition:
+    opacity 0.55s var(--ease-out),
+    transform 0.55s var(--ease-out);
+}
+
+.closing {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.hud {
+  display: grid;
+  gap: 0.5rem;
+  padding-bottom: clamp(1.25rem, 4vh, 2.75rem);
+  padding-left: var(--gutter);
+}
+
+.tag {
+  color: var(--muted);
+}
+
+.pct {
+  font-size: clamp(1.75rem, 4.5vh, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.pct i {
+  font-style: normal;
+  font-size: 0.42em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin-left: 0.25em;
+  color: var(--ember-text);
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dots b {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--line-strong);
+  transition: background 0.12s linear;
+}
+
+.dots b.on {
+  background: var(--ember-text);
+}

@@ -1,0 +1,31 @@
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 1.5px solid var(--ember);
+  border-radius: 50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.3s var(--ease-out),
+    background-color 0.2s var(--snap);
+  will-change: transform;
+}
+
+.live {
+  opacity: 0.95;
+}
+
+.hot {
+  background: rgba(255, 106, 61, 0.16);
+}
+
+@media (pointer: coarse) {
+  .ring {
+    display: none;
+  }
+}

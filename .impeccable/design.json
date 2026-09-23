@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-23",
+  "title": "Design System: Oscar — Software Engineer",
+  "extensions": {
+    "colorMeta": {
+      "ember": {
+        "role": "primary",
+        "displayName": "Ember",
+        "canonical": "#ff6a3d",
+        "tonalRamp": ["#3d0c00", "#7a1900", "#b32600", "#e8521e", "#ff6a3d", "#ff9878", "#ffc5b1", "#ffebe3"],
+        "note": "The portal's light. Constant in both scenes: CONTACT fill, brand dot, cursor ring, active dots, selection, caret, card hover border at 70%, halo alphas 0.38/0.6, ring hot fill 0.16."
+      },
+      "ember-rust": {
+        "role": "primary-text",
+        "displayName": "Ember Rust",
+        "canonical": "#b33a0b",
+        "tonalRamp": ["#2c0e03", "#491604", "#6d2006", "#8f2c08", "#b33a0b", "#c55a30", "#d98a66", "#eec3ac"],
+        "note": "`--ember-text` in the daylight scene: ember retuned to clear 4.5:1 as text on the warm field. Reassigns to #ff6a3d under [data-theme='dark']."
+      },
+      "ember-ink": {
+        "role": "neutral",
+        "displayName": "Ember Ink",
+        "canonical": "#1a0b05",
+        "tonalRamp": ["#050201", "#0a0402", "#1a0b05", "#2e1810", "#4a2e22", "#6f564a", "#9b867b", "#cabdb4"],
+        "note": "Near-black carried inside ember: CONTACT text and ::selection color. Never a page ground."
+      },
+      "ember-tint": {
+        "role": "primary-tint",
+        "displayName": "Ember Tint",
+        "canonical": "#ffc9b3",
+        "tonalRamp": ["#4a1a0d", "#7a2d18", "#a84527", "#d66a45", "#ffc9b3", "#ffd8ca", "#ffe9e2", "#fffaf7"],
+        "note": "Pale ember for dark tiles — index number inside the initials fallback only."
+      },
+      "void-ink": {
+        "role": "background",
+        "displayName": "Void Ink",
+        "canonical": "#06171c",
+        "tonalRamp": ["#010405", "#030a0d", "#06171c", "#0b2830", "#123c47", "#1d5a68", "#3f8494", "#7fb2c0"],
+        "note": "Night ground (--bg under dark) and daylight ink (--ink under light); also the shader's dark background."
+      },
+      "deep-teal": {
+        "role": "secondary",
+        "displayName": "Deep Teal",
+        "canonical": "#0e3b44",
+        "tonalRamp": ["#02090b", "#041417", "#082227", "#0b2f36", "#0e3b44", "#1e5f6c", "#3f8b9a", "#7cbfc9"],
+        "note": "The field's cool mid-tone: card interior wash (5%), media placeholder (45% over bg), initials tile (60% over void), dark card ground (78% void + 22% teal)."
+      },
+      "warm-white": {
+        "role": "neutral",
+        "displayName": "Warm White",
+        "canonical": "#f2ede4",
+        "tonalRamp": ["#1f1c18", "#38342e", "#524c43", "#6f685d", "#8f877b", "#b7afa3", "#d9d2c7", "#f2ede4"],
+        "note": "Ink of the void scene; initials-fallback lettering."
+      },
+      "warm-field": {
+        "role": "background",
+        "displayName": "Warm Field",
+        "canonical": "#f4eee3",
+        "tonalRamp": ["#211d18", "#3a352f", "#544e45", "#716a5e", "#91897c", "#b9b1a4", "#dbd4c8", "#f4eee3"],
+        "note": "Daylight ground (--bg default) and base of every translucent mix."
+      },
+      "warm-paper": {
+        "role": "background",
+        "displayName": "Warm Paper",
+        "canonical": "#faf7f0",
+        "tonalRamp": ["#231f1e", "#3c3831", "#565047", "#736c60", "#938b7e", "#bbb3a6", "#ddd6ca", "#faf7f0"],
+        "note": "Declared at :root as the paper-highlight end of the warm family; no surface claims it yet — reserved, not invented."
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#4d5858",
+        "tonalRamp": ["#0a1417", "#1c2a2f", "#2f3e43", "#414f54", "#5b6468", "#7e868a", "#abada8", "#d7d9d6"],
+        "note": "Scene-relative color-mix: 70% of current ink over current bg. Canonical is the daylight resolution; the void scene resolves ≈#abada8. The only 'gray' in the system."
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(6, 23, 28, 0.15)",
+        "tonalRamp": ["rgba(6, 23, 28, 0.6)", "rgba(6, 23, 28, 0.45)", "rgba(6, 23, 28, 0.32)", "rgba(6, 23, 28, 0.22)", "rgba(6, 23, 28, 0.15)", "rgba(6, 23, 28, 0.1)", "rgba(6, 23, 28, 0.06)", "rgba(6, 23, 28, 0.03)"],
+        "note": "Scene-relative color-mix: 15% of current ink; canonical is the daylight alpha. Section, card, nav, footer and media borders."
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "rgba(6, 23, 28, 0.32)",
+        "tonalRamp": ["rgba(6, 23, 28, 0.7)", "rgba(6, 23, 28, 0.55)", "rgba(6, 23, 28, 0.44)", "rgba(6, 23, 28, 0.32)", "rgba(6, 23, 28, 0.24)", "rgba(6, 23, 28, 0.16)", "rgba(6, 23, 28, 0.1)", "rgba(6, 23, 28, 0.05)"],
+        "note": "Scene-relative color-mix: 32% of current ink; canonical is the daylight alpha. Ghost button, readout track, menu/theme toggles."
+      },
+      "panel": {
+        "role": "surface",
+        "displayName": "Panel Veil",
+        "canonical": "rgba(244, 238, 227, 0.88)",
+        "tonalRamp": ["rgba(244, 238, 227, 1)", "rgba(244, 238, 227, 0.96)", "rgba(244, 238, 227, 0.88)", "rgba(244, 238, 227, 0.75)", "rgba(244, 238, 227, 0.55)", "rgba(244, 238, 227, 0.35)", "rgba(244, 238, 227, 0.18)", "rgba(244, 238, 227, 0.05)"],
+        "note": "Scene-relative color-mix: 88% of current bg (84% void in dark); canonical is the daylight value. Section and nav grounds — the shader breathes through."
+      },
+      "card-bg": {
+        "role": "surface",
+        "displayName": "Card Ground",
+        "canonical": "#f5f0e6",
+        "tonalRamp": ["#1e1a15", "#38332c", "#524c43", "#6f685d", "#8f877b", "#b7afa3", "#dbd4c9", "#f5f0e6"],
+        "note": "Scene-relative color-mix: 90% bg + 10% white (dark: 78% void + 22% teal); canonical is the daylight resolution. Project-card rest ground, one step above the panel."
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The hero word OSCAR only. 800, ~16vw, wdth 112, uppercase, left-anchored on the gutter." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles — About, Projects, Contact. 800, -0.015em." },
+      "title": { "displayName": "Title", "purpose": "Project card names. 700, line-height 1.25." },
+      "body": { "displayName": "Body", "purpose": "Bio, descriptions, footer lede. 400/1rem, line-height 1.6, measure 68ch via --measure." },
+      "label": { "displayName": "Label", "purpose": "Buttons and scene names: uppercase, 700, 0.2em tracked." },
+      "micro": { "displayName": "Micro", "purpose": "Nav links, rail indexes/labels, readouts, meta counts, legal smallprint, loader tag: uppercase, 600, 0.18–0.3em tracked." },
+      "chip": { "displayName": "Chip", "purpose": "Skill chips: uppercase, 600, 0.12em tracked." },
+      "loader-pct": { "displayName": "Loader Percentage", "purpose": "PortalLoader bottom-left count: 800, line-height 1, % glyph at 0.42em in Ember Rust." },
+      "overlay-link": { "displayName": "Overlay Link", "purpose": "Open-menu links (desktop grid overlay and mobile menu): 800, 0.01em." },
+      "footer-mail": { "displayName": "Footer Mail", "purpose": "Display-scale contact email with the 3px ember underline: 800, -0.01em." },
+      "initials": { "displayName": "Initials Fallback", "purpose": "Initials inside the teal-over-void fallback tile: 800, 0.06em, Warm White." }
+    },
+    "shadows": [
+      { "name": "portal-halo", "value": "0 0 22px rgba(255, 106, 61, 0.38), 0 0 0 1px rgba(255, 106, 61, 0.6)", "purpose": "CONTACT button only (--glow-ember) — the portal's single light source. The One-Glow Rule." },
+      { "name": "card-lift", "value": "0 14px 34px -14px rgb(0 0 0 / 0.45)", "purpose": "Project-card hover only, with translateY(-3px) and the 70%-ember border. The Flat-Rest Rule: the only other shadow in the system." }
+    ],
+    "motion": [
+      { "name": "snap", "value": "0.16s", "purpose": "Every state change: borders, colors, theme crossfade (linear); loader dot flips at 0.12s linear." },
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The one authored easing for entrances and travel." },
+      { "name": "hero-rise", "value": "0.9s ease-out, staggered 0 / 0.1 / 0.18 / 0.26s", "purpose": "Hero title, role, stack, actions entering over the field." },
+      { "name": "loader-count", "value": "1100ms, cubic ease-out (1-(1-p)^3)", "purpose": "PortalLoader 0→100 percentage count at the bottom-left." },
+      { "name": "loader-close", "value": "0.55s ease-out fade + 10px drop", "purpose": "PortalLoader exit; skipped entirely under reduced motion." },
+      { "name": "menu-open", "value": "0.35s ease-out rise-and-fade", "purpose": "Desktop grid overlay; mobile menu uses 0.3s ease-out with visibility." },
+      { "name": "card-lift", "value": "0.4s ease-out transform / 0.3s box-shadow / 0.6s thumb zoom", "purpose": "Project-card hover choreography." },
+      { "name": "reduced-motion", "value": "@media (prefers-reduced-motion: reduce)", "purpose": "Freezes the shader to one frame, skips the loader, unmounts the cursor ring, disables smooth scroll. Honored, not optional." }
+    ],
+    "breakpoints": [
+      { "name": "footer-rows", "value": "480px" },
+      { "name": "menu", "value": "767px" },
+      { "name": "desktop", "value": "768px" },
+      { "name": "about-split", "value": "900px" },
+      { "name": "scene-frame", "value": "1100px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (CONTACT)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The portal's one light source: ember fill, ember-ink text, permanent halo; hover brightens instead of glowing again.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Contact</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: 0.85rem 1.7rem; border: none; border-radius: var(--r, 12px); background: var(--ember, #ff6a3d); color: var(--ember-ink, #1a0b05); font-family: 'Archivo', system-ui, sans-serif; font-size: 0.75rem; font-weight: 700; line-height: 1; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; box-shadow: var(--glow-ember, 0 0 22px rgba(255, 106, 61, 0.38), 0 0 0 1px rgba(255, 106, 61, 0.6)); transition: filter 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.16s; } .ds-btn-primary:hover { filter: brightness(1.07); } .ds-btn-primary:focus-visible { outline: 2px solid var(--ember-text, #b33a0b); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button (VIEW PROJECTS)",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary hero action: strong-hairline outline that turns ember-rust on hover — no glow, ever.",
+      "html": "<button class=\"ds-btn-ghost\" type=\"button\">View projects</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: 0.85rem 1.7rem; border: 1px solid var(--line-strong, rgba(6, 23, 28, 0.32)); border-radius: var(--r, 12px); background: transparent; color: var(--ink, #06171c); font-family: 'Archivo', system-ui, sans-serif; font-size: 0.75rem; font-weight: 700; line-height: 1; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: border-color 0.16s, color 0.16s; } .ds-btn-ghost:hover { border-color: var(--ember-text, #b33a0b); color: var(--ember-text, #b33a0b); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--ember-text, #b33a0b); outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Fixed panel-veil bar with brand ring/dot, tracked micro links (ember-rust active underline) and the grid button that opens the full-screen portal overlay (the mobile menu at ≤767px).",
+      "html": "<nav class=\"ds-nav\"> <a class=\"ds-nav-brand\" href=\"#\"> <svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><circle cx=\"16\" cy=\"16\" r=\"8.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.4\" stroke-dasharray=\"40 13.36\" stroke-linecap=\"round\" transform=\"rotate(-38 16 16)\"/><circle cx=\"24.4\" cy=\"12.2\" r=\"3.6\" fill=\"#ff6a3d\"/></svg> <span class=\"ds-nav-name\">Oscar</span> </a> <ul class=\"ds-nav-menu is-open\"> <li><a class=\"ds-nav-link is-active\" href=\"#home\">Home</a></li> <li><a class=\"ds-nav-link\" href=\"#projects\">Projects</a></li> </ul> <div class=\"ds-nav-actions\"> <button class=\"ds-nav-grid\" type=\"button\" aria-label=\"Close menu\" aria-expanded=\"true\"> <svg width=\"16\" height=\"12\" viewBox=\"0 0 16 12\" aria-hidden=\"true\"><g stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"><path d=\"M2.5 2l11 8M13.5 2l-11 8\"/></g></svg> </button> </div> </nav>",
+      "css": ".ds-nav { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: var(--nav-h, 4rem); padding: 0 var(--gutter, clamp(1.25rem, 4vw, 3.5rem)); background: var(--panel, rgba(244, 238, 227, 0.88)); border-bottom: 1px solid var(--line, rgba(6, 23, 28, 0.15)); } .ds-nav-brand { display: flex; align-items: center; gap: 0.6rem; color: var(--ink, #06171c); text-decoration: none; } .ds-nav-brand svg { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav-brand:hover svg { transform: rotate(120deg); } .ds-nav-name { font-size: 0.875rem; font-weight: 800; letter-spacing: 0.26em; text-transform: uppercase; } .ds-nav-menu { display: flex; align-items: center; gap: clamp(1.25rem, 3vw, 2.5rem); margin: 0; padding: 0; list-style: none; } .ds-nav-link { padding: 0.4rem 0; border-bottom: 1px solid transparent; background: none; border-top: 0; border-left: 0; border-right: 0; color: var(--muted, #4d5858); font-family: 'Archivo', system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: color 0.16s, border-color 0.16s; } .ds-nav-link:hover { color: var(--ink, #06171c); } .ds-nav-link.is-active { color: var(--ember-text, #b33a0b); border-bottom-color: var(--ember-text, #b33a0b); } .ds-nav-link:focus-visible { outline: 2px solid var(--ember-text, #b33a0b); outline-offset: 3px; } .ds-nav-actions { display: flex; align-items: center; gap: 0.7rem; } .ds-nav-grid { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid var(--line-strong, rgba(6, 23, 28, 0.32)); border-radius: var(--r-sm, 8px); background: none; color: var(--ink, #06171c); cursor: pointer; transition: border-color 0.16s, color 0.16s; } .ds-nav-grid:hover { border-color: var(--ember-text, #b33a0b); color: var(--ember-text, #b33a0b); } .ds-nav-grid:focus-visible { outline: 2px solid var(--ember-text, #b33a0b); outline-offset: 3px; } .ds-nav-menu.is-open { position: fixed; top: var(--nav-h, 4rem); left: 0; right: 0; bottom: 0; z-index: 45; flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.75rem; padding: var(--gutter, clamp(1.25rem, 4vw, 3.5rem)); background: color-mix(in srgb, var(--bg, #f4eee3) 94%, transparent); animation: ds-menu-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; } .ds-nav-menu.is-open .ds-nav-link { padding: 0; border-bottom: 2px solid transparent; color: var(--ink, #06171c); font-size: clamp(2rem, 9vw, 3rem); font-weight: 800; letter-spacing: 0.01em; } .ds-nav-menu.is-open .ds-nav-link.is-active { color: var(--ember-text, #b33a0b); border-bottom-color: var(--ember-text, #b33a0b); } @keyframes ds-menu-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } } @media (max-width: 767px) { .ds-nav-menu:not(.is-open) { display: none; } }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "The evidence module: 16/9 media over a teal placeholder, shader-derived interior washes, and a hover that lifts with a neutral shadow plus an ember border.",
+      "html": "<article class=\"ds-card\"> <a class=\"ds-card-link\" href=\"#\"> <div class=\"ds-card-media\"> <img class=\"ds-card-thumb\" src=\"shot.webp\" alt=\"Screenshot of MiniNabi\" width=\"1600\" height=\"900\"/> </div> <div class=\"ds-card-body\"> <div class=\"ds-card-top\"> <h3 class=\"ds-card-name\">MiniNabi</h3> <span class=\"ds-card-num\">03</span> </div> <p class=\"ds-card-desc\">Storefront for a handcrafted dessert brand.</p> <ul class=\"ds-card-tech\"><li>React</li><li>TypeScript</li></ul> <div class=\"ds-card-foot\"> <span class=\"ds-card-spec\">20XX · Developer</span> <span class=\"ds-card-action\">Open <svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M2.5 9.5 9.5 2.5M4 2.5h5.5V8\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></span> </div> </div> </a> </article>",
+      "css": ".ds-card { position: relative; border: 1px solid var(--line, rgba(6, 23, 28, 0.15)); border-radius: var(--r, 12px); background: var(--card-bg, #f5f0e6); overflow: hidden; transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); } .ds-card::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(120% 85% at 12% -10%, color-mix(in srgb, var(--teal, #0e3b44) 5%, transparent), transparent 62%), radial-gradient(95% 75% at 105% 110%, color-mix(in srgb, var(--ember, #ff6a3d) 4%, transparent), transparent 58%); } .ds-card:hover { border-color: rgba(255, 106, 61, 0.7); box-shadow: 0 14px 34px -14px rgb(0 0 0 / 0.45); transform: translateY(-3px); } .ds-card:focus-within { outline: 2px solid var(--ember, #ff6a3d); outline-offset: 3px; } .ds-card-link { position: relative; z-index: 1; display: flex; flex-direction: column; height: 100%; color: inherit; text-decoration: none; } .ds-card-media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: color-mix(in srgb, var(--teal, #0e3b44) 45%, var(--bg, #f4eee3)); border-bottom: 1px solid var(--line, rgba(6, 23, 28, 0.15)); } .ds-card-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); } .ds-card:hover .ds-card-thumb { transform: scale(1.04); } .ds-card-body { display: grid; gap: 0.7rem; padding: 1.1rem 1.15rem 1.15rem; flex: 1; align-content: start; } .ds-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; } .ds-card-name { margin: 0; font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 700; line-height: 1.25; } .ds-card-num { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.15em; color: var(--muted, #4d5858); font-variant-numeric: tabular-nums; transition: color 0.16s; } .ds-card:hover .ds-card-num { color: var(--ember-text, #b33a0b); } .ds-card-desc { margin: 0; font-size: 0.875rem; line-height: 1.6; color: var(--muted, #4d5858); } .ds-card-tech { display: flex; flex-wrap: wrap; gap: 0.15rem 0; margin: 0; padding: 0; list-style: none; } .ds-card-tech li { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted, #4d5858); } .ds-card-tech li:not(:last-child)::after { content: '·'; margin: 0 0.45rem; color: var(--line-strong, rgba(6, 23, 28, 0.32)); } .ds-card-foot { margin-top: auto; padding-top: 0.85rem; border-top: 1px solid var(--line, rgba(6, 23, 28, 0.15)); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; } .ds-card-spec { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted, #4d5858); font-variant-numeric: tabular-nums; } .ds-card-action { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink, #06171c); transition: color 0.16s; } .ds-card:hover .ds-card-action { color: var(--ember-text, #b33a0b); }"
+    },
+    {
+      "name": "Skill Chip",
+      "kind": "chip",
+      "refersTo": "skill-chip",
+      "description": "Informational skill tag: hairline border, 8px radius, muted text that turns ember-rust on hover; not clickable.",
+      "html": "<ul class=\"ds-chips\"><li class=\"ds-chip\">React</li><li class=\"ds-chip\">TypeScript</li><li class=\"ds-chip\">Django</li></ul>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; } .ds-chip { padding: 0.35rem 0.7rem; border: 1px solid var(--line, rgba(6, 23, 28, 0.15)); border-radius: var(--r-sm, 8px); background: transparent; color: var(--muted, #4d5858); font-family: 'Archivo', system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: default; transition: color 0.16s, border-color 0.16s; } .ds-chip:hover { color: var(--ember-text, #b33a0b); border-color: var(--ember-text, #b33a0b); }"
+    },
+    {
+      "name": "Section Rail",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Fixed left rail (≥1100px): tabular 01–04 indexes over tracked labels; the active scene turns ember-rust with a 1px underline.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"Sections\"> <button class=\"ds-rail-item is-active\" type=\"button\"> <span class=\"ds-rail-idx\">01</span> <span class=\"ds-rail-lbl\">Home</span> </button> <button class=\"ds-rail-item\" type=\"button\"> <span class=\"ds-rail-idx\">02</span> <span class=\"ds-rail-lbl\">About</span> </button> <button class=\"ds-rail-item\" type=\"button\"> <span class=\"ds-rail-idx\">03</span> <span class=\"ds-rail-lbl\">Projects</span> </button> </nav>",
+      "css": ".ds-rail { position: fixed; left: clamp(0.75rem, 1.5vw, 1.5rem); top: 50%; transform: translateY(-50%); z-index: 30; display: flex; flex-direction: column; gap: 1.35rem; } .ds-rail-item { display: grid; gap: 0.25rem; justify-items: start; padding: 0.1rem 0; border: none; background: none; color: var(--muted, #4d5858); cursor: pointer; transition: color 0.16s; } .ds-rail-item:hover { color: var(--ink, #06171c); } .ds-rail-item:focus-visible { outline: 2px solid var(--ember-text, #b33a0b); outline-offset: 3px; } .ds-rail-idx { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.18em; font-variant-numeric: tabular-nums; } .ds-rail-lbl { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: color 0.16s, border-color 0.16s; } .ds-rail-item.is-active, .ds-rail-item.is-active .ds-rail-lbl { color: var(--ember-text, #b33a0b); } .ds-rail-item.is-active .ds-rail-lbl { border-bottom-color: var(--ember-text, #b33a0b); }"
+    },
+    {
+      "name": "Scene Readout",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Fixed right readout (≥1100px): vertical SCROLL label, hairline track with ember knob at scroll progress, scene name, static ACTIVE dot. Decorative (aria-hidden).",
+      "html": "<aside class=\"ds-readout\" aria-hidden=\"true\"> <span class=\"ds-readout-vertical\">Scroll</span> <span class=\"ds-readout-track\" style=\"--progress: 0.4\"><span class=\"ds-readout-knob\"></span></span> <span class=\"ds-readout-env\"> <span class=\"ds-readout-env-label\">Scene</span> <strong class=\"ds-readout-env-name\">Work</strong> <span class=\"ds-readout-live\"><i class=\"ds-readout-dot\"></i>Active</span> </span> </aside>",
+      "css": ".ds-readout { position: fixed; right: clamp(0.75rem, 1.5vw, 1.5rem); top: 50%; transform: translateY(-50%); z-index: 30; display: flex; flex-direction: column; align-items: center; gap: 0.9rem; color: var(--muted, #4d5858); } .ds-readout-vertical { writing-mode: vertical-rl; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; } .ds-readout-track { position: relative; width: 1px; height: clamp(90px, 16vh, 150px); background: var(--line-strong, rgba(6, 23, 28, 0.32)); } .ds-readout-knob { position: absolute; left: 50%; top: calc(var(--progress, 0) * 100%); width: 7px; height: 7px; border-radius: 50%; background: var(--ember-text, #b33a0b); transform: translate(-50%, -50%); } .ds-readout-env { display: grid; justify-items: center; gap: 0.35rem; text-align: center; } .ds-readout-env-label { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; } .ds-readout-env-name { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink, #06171c); } .ds-readout-live { display: flex; align-items: center; gap: 0.4rem; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; } .ds-readout-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ember-text, #b33a0b); }"
+    },
+    {
+      "name": "Portal Loader",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature: bottom-left HUD, no curtain — zero-padded percentage counting 0→100 over 1100ms with 16 dots lighting ember-rust, then a 0.55s fade-and-drop. Skipped under reduced motion.",
+      "html": "<div class=\"ds-loader\"> <span class=\"ds-loader-tag label\">Loading portal</span> <span class=\"ds-loader-pct\">042<i>%</i></span> <span class=\"ds-loader-dots\"> <b class=\"on\"></b><b class=\"on\"></b><b class=\"on\"></b><b class=\"on\"></b><b class=\"on\"></b><b class=\"on\"></b><b class=\"on\"></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b> </span> </div>",
+      "css": ".ds-loader { position: fixed; inset: 0; z-index: 40; pointer-events: none; display: flex; align-items: flex-end; } .ds-loader > * { margin: 0; } .ds-loader .ds-loader-tag, .ds-loader-tag { display: block; font-size: 0.6875rem; font-weight: 600; line-height: 1.5; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted, #4d5858); } .ds-loader { flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 0.5rem; padding-bottom: clamp(1.25rem, 4vh, 2.75rem); padding-left: var(--gutter, clamp(1.25rem, 4vw, 3.5rem)); } .ds-loader-pct { display: block; font-size: clamp(1.75rem, 4.5vh, 2.75rem); font-weight: 800; line-height: 1; letter-spacing: -0.02em; color: var(--ink, #06171c); font-variant-numeric: tabular-nums; } .ds-loader-pct i { font-style: normal; font-size: 0.42em; font-weight: 600; letter-spacing: 0.12em; margin-left: 0.25em; color: var(--ember-text, #b33a0b); } .ds-loader-dots { display: flex; gap: 6px; } .ds-loader-dots b { width: 9px; height: 9px; border-radius: 2px; background: var(--line-strong, rgba(6, 23, 28, 0.32)); transition: background 0.12s linear; } .ds-loader-dots b.on { background: var(--ember-text, #b33a0b); }"
+    },
+    {
+      "name": "Theme Toggle",
+      "kind": "button",
+      "refersTo": "theme-toggle",
+      "description": "34px hairline square with a half-moon SVG; reassigns --bg/--ink so the whole frame crossfades over --snap. Hover turns border and glyph ember-rust — no glow.",
+      "html": "<button class=\"ds-theme\" type=\"button\" aria-label=\"Switch theme\"> <svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" aria-hidden=\"true\"><circle cx=\"7\" cy=\"7\" r=\"5.6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M7 1.4 A5.6 5.6 0 0 1 7 12.6 Z\" fill=\"currentColor\"/></svg> </button>",
+      "css": ".ds-theme { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line-strong, rgba(6, 23, 28, 0.32)); border-radius: var(--r-sm, 8px); background: none; color: var(--ink, #06171c); cursor: pointer; transition: border-color 0.16s, color 0.16s; } .ds-theme:hover { border-color: var(--ember-text, #b33a0b); color: var(--ember-text, #b33a0b); } .ds-theme:focus-visible { outline: 2px solid var(--ember-text, #b33a0b); outline-offset: 3px; }"
+    },
+    {
+      "name": "Footer Contact",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Contact close: display-scale email with a 3px ember underline, hairline label/value rows with outbound glyphs, and a legal micro-caps close bar.",
+      "html": "<footer class=\"ds-footer\"> <a class=\"ds-footer-mail\" href=\"mailto:garciaoscargfa@gmail.com\">garciaoscargfa@gmail.com</a> <dl class=\"ds-footer-table\"> <div class=\"ds-footer-row\"><dt class=\"ds-footer-label\">Email</dt><dd class=\"ds-footer-value\"><a href=\"mailto:garciaoscargfa@gmail.com\">garciaoscargfa@gmail.com</a></dd></div> <div class=\"ds-footer-row\"><dt class=\"ds-footer-label\">GitHub</dt><dd class=\"ds-footer-value\"><a href=\"https://github.com/SatellitexOT12\">github.com/SatellitexOT12 <svg class=\"ds-footer-glyph\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M3.5 8.5 L8.5 3.5 M4.75 3.5 H8.5 V7.25\"/></svg></a></dd></div> </dl> <div class=\"ds-footer-close\"><p class=\"ds-footer-legal\">© 2026 Oscar — All rights reserved</p></div> </footer>",
+      "css": ".ds-footer { padding: clamp(4.5rem, 10vh, 8rem) var(--gutter, clamp(1.25rem, 4vw, 3.5rem)) clamp(2rem, 4vh, 3rem); background: var(--panel, rgba(244, 238, 227, 0.88)); border-top: 1px solid var(--line, rgba(6, 23, 28, 0.15)); } .ds-footer-mail { display: inline-block; font-size: clamp(1.35rem, 4vw, 3rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.01em; color: var(--ink, #06171c); text-decoration: none; overflow-wrap: anywhere; border-bottom: 3px solid var(--ember, #ff6a3d); padding-bottom: 0.15em; transition: color 0.16s, border-color 0.16s; } .ds-footer-mail:hover { color: var(--ember-text, #b33a0b); } .ds-footer-mail:focus-visible { outline: 2px solid var(--ember-text, #b33a0b); outline-offset: 3px; } .ds-footer-table { margin: clamp(2.5rem, 6vh, 4rem) 0 0; border-top: 1px solid var(--line, rgba(6, 23, 28, 0.15)); } .ds-footer-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; align-items: baseline; padding: 0.95rem 0; border-bottom: 1px solid var(--line, rgba(6, 23, 28, 0.15)); } .ds-footer-label { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted, #4d5858); } .ds-footer-value { margin: 0; } .ds-footer-value a { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.875rem; font-weight: 500; color: var(--ink, #06171c); text-decoration: none; overflow-wrap: anywhere; transition: color 0.16s; } .ds-footer-value a:hover { color: var(--ember-text, #b33a0b); } .ds-footer-value a:focus-visible { outline: 2px solid var(--ember-text, #b33a0b); outline-offset: 3px; } .ds-footer-glyph { width: 11px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.4; } .ds-footer-close { margin-top: clamp(2.5rem, 6vh, 4rem); padding-top: 1.25rem; border-top: 1px solid var(--line, rgba(6, 23, 28, 0.15)); } .ds-footer-legal { margin: 0; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted, #4d5858); } @media (max-width: 480px) { .ds-footer-row { grid-template-columns: 1fr; gap: 0.25rem; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Living Portal",
+    "overview": "The portfolio is a portal, not a document. A full-bleed WebGL particle field breathes behind every section, deforms under the cursor, and re-grades itself scene by scene as you scroll — liquid and ember-biased at Home, calm at Profile, a dense mesh at Work, ember at full strength at Contact — while everything readable floats above it in warm ink: one giant word (OSCAR) in variable-width Archivo, micro labels tracked into the margins, hairline rules, and softly cornered cards. The world has exactly two materials: the void (#06171c) as ground and the ember (#ff6a3d) as light; every other value is a warm paper tone or a translucent mix of the current ink.\n\nTwo scenes carry the whole site: a warm daylight field (warm-field ground, void ink) and the void night scene (void ground, warm-white ink). The toggle reassigns `--bg` and `--ink`, the body crossfades over `--snap` (0.16s), and the shader lerps its light to match — but ember never changes; only ember-as-text re-tunes through `--ember-text` (#b33a0b in daylight, #ff6a3d in the void) so it always clears 4.5:1. One family does all the talking: self-hosted Archivo variable (weights 100–900, wdth 62–125), with the display word pinned at wdth 112. The tournament that chose this world (seed 16e3a2f6) rejected two failures by name — cold/clinical and monotony — which is why the palette is paper-warm, the field never sits still, and every section gets its own grade of the same living material.\n\nThe signature moment is the cursor bending the particle field in real time under an ember ring — craft demonstrated before a single adjective is read. Around it sit the rest of the moments: the 0→100% portal loader counting at the bottom-left with no curtain, the dissolve pulse the field takes when you jump scenes, the CONTACT halo that acts as the portal's one light source, and the numbered rail and scene readout that frame the viewport like an instrument. Confirmed visual rejections: the static document with a grid-of-cards hero this portfolio category always ships, cold/clinical grayness, monotony, any second typeface, and any glow beyond the single sanctioned one.",
+    "keyCharacteristics": [
+      "Full-bleed WebGL portal field: four scene grades, cursor displacement, particle mesh, fine grain — always on, frozen to a static frame under reduced motion",
+      "Two scenes swap `--bg`/`--ink` (warm daylight ↔ void night); ember is constant, ember-as-text re-tunes per scene for 4.5:1",
+      "One family: Archivo variable; OSCAR at `--t-display` (~16vw) wdth 112; micro labels uppercase and tracked 0.18–0.3em into the margins",
+      "Soft geometry: 12px cards and buttons, 8px chips and toggles; perfect circles reserved for ember marks (ring, knob, dots)",
+      "Depth is earned: one ember halo (CONTACT), one neutral hover shadow (project cards); everything else rests flat on translucent `--panel`/`--card-bg`",
+      "One motion voice: `--ease-out` cubic-bezier(0.16, 1, 0.3, 1) for travel and entrances, `--snap` 0.16s for state; prefers-reduced-motion freezes the portal"
+    ],
+    "rules": [
+      { "name": "The One Light Rule", "body": "Ember is the only saturated color and the only glow in the system. It marks actions, active state, and the cursor — never a background wash, never body text, never a decorative gradient.", "section": "colors" },
+      { "name": "The Two-Scene Rule", "body": "Themes swap two custom properties (`--bg`, `--ink`) and the shader lerps its light; ember never changes, but ember-as-text always resolves through `--ember-text` (#b33a0b daylight, #ff6a3d void) so it clears 4.5:1 in both scenes.", "section": "colors" },
+      { "name": "The One-Family Rule", "body": "Archivo for everything — display, body, labels, legal. No mono, no serif, no system display face enters the stack; weight, size, width axis, and tracking carry all hierarchy.", "section": "typography" },
+      { "name": "The +200 Track Rule", "body": "Every label that frames the display voice is uppercase and tracked ≥0.18em (up to 0.3em): role, stack, nav, buttons, rail, readout, legal. Card-internal micro-telemetry may relax to 0.1–0.15em. Body copy and headings are never tracked-caps — the `all-caps-body` detector rule is disabled with exactly this reason on the tracked meta lines (role, stack, legal), never on prose.", "section": "typography" },
+      { "name": "The Scene-Frame Rule", "body": "At ≥1100px the viewport is framed — numbered rail left, scene readout right — and every content band indents an extra 4.5rem past the gutter to live inside the frame. Below 1100px the frame retracts; it never becomes a hamburger sidebar.", "section": "layout" },
+      { "name": "The Margin-Label Rule", "body": "Vertical micro labels (edge labels like `MESH · DENSE`) park only in the right padding band at ≥1100px, are non-interactive (`pointer-events: none`), and are decorative (`aria-hidden`).", "section": "layout" },
+      { "name": "The One-Glow Rule", "body": "Exactly one element carries a glow: the CONTACT button — the portal's light source and the first-viewport promise of the direction contract. Everything else answers state with border color, ember text, brightness, or a plain outline; no card, nav item, chip, or the cursor ring ever grows a halo. The `dark-glow` detector rule is disabled with this reason on that one line only.", "section": "elevation" },
+      { "name": "The Flat-Rest Rule", "body": "Surfaces rest flat. Shadow appears only as a state response — the project-card hover lift. If another surface must answer state, it changes border, text color, or gains the 3px focus outline; it never floats.", "section": "elevation" },
+      { "name": "The Soft-Portal Rule", "body": "Corners are 12px on cards and buttons and 8px on chips and toggles — no 0px slabs, no pills. Perfect circles are reserved for ember marks (ring, knob, dots), so every round ember shape reads as part of the portal.", "section": "shapes" }
+    ],
+    "dos": [
+      "**Do** keep ember scarce and singular: it marks actions, active state, dots, and the cursor — CONTACT is the only glowing element (The One Light Rule / The One-Glow Rule).",
+      "**Do** set every ember *text* through `--ember-text` (#b33a0b daylight, #ff6a3d void) so it clears 4.5:1 in both scenes; fills keep `--ember`.",
+      "**Do** use one family — Archivo variable — and its axes: display at 800 / wdth 112 / ~16vw; body at 400/1rem.",
+      "**Do** uppercase and track every framing label (0.18–0.3em; card micro-telemetry 0.1–0.15em): role, stack, nav, rail, readout, legal.",
+      "**Do** respect the ≥1100px scene frame: rail left, readout right, content bands indented `gutter + 4.5rem`, edge labels parked in the right band and non-interactive.",
+      "**Do** rest surfaces on `--panel`/`--card-bg` with 1px `--line`, and answer hover with the card lift (neutral shadow + 3px rise + ember border) or ember text.",
+      "**Do** anchor bands to `--gutter` with a 1280px inner column, left-aligned; cap prose at `--measure` (68ch).",
+      "**Do** keep the field alive: the shader runs behind every section, regrades per scene, and freezes to a static frame under reduced motion — with the loader, ring, and smooth scroll.",
+      "**Do** fall back to the initials module for missing screenshots (teal-over-void tile, Ember Tint index), never an external placeholder."
+    ],
+    "donts": [
+      "**Don't** add a second glow, any blur, or backdrop-filter — no halo on cards, nav, chips, or the cursor ring (the ring tints at 16%, it does not glow).",
+      "**Don't** set body copy or headings in tracked caps: caps are the label and display voice; `all-caps-body` is disabled only for tracked meta labels, the stack line, and legal smallprint — never for prose.",
+      "**Don't** introduce a second typeface or a mono \"for code\" — Archivo covers display, body, labels, and numerals alike.",
+      "**Don't** use ember as a background wash, section fill, or paragraph color, and never below 4.5:1 without `--ember-text`.",
+      "**Don't** hardcode `#000000`/`#ffffff` or bypass the scene tokens — components read `var(--ink)`/`var(--bg)`/`var(--line)`/`var(--muted)` so both scenes stay coherent.",
+      "**Don't** add sharp 0px corners or pill-shaped buttons: radius is 12px/8px, and circles are reserved for ember marks.",
+      "**Don't** make margin furniture interactive: rail, readout, and edge labels are decorative; the edge label is `pointer-events: none` and `aria-hidden`.",
+      "**Don't** sit content centered in the hero or under the frame: display type stays left-anchored on the gutter, content bands clear the rail and readout at ≥1100px."
+    ]
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "title": "Elegir el mundo visual",
+  "question": "El reparto tocó «Informe Anual '70». ¿Te quedás con él, tomás un alternativo o re-roll?",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Informe Anual '70",
+      "kicker": "THE ROLL",
+      "lineage": "informes anuales y manuales de identidad, 1968–79",
+      "thesis": "El informe donde tu trabajo se audita: bandas de tinta a sangre, cifras a escala de póster y cero adjetivos.",
+      "palette": ["#1B1712", "#E9A21C", "#D2451E", "#F1E9D8"],
+      "materials": ["papel offset", "bandas de tinta a sangre", "grotesk tabular"],
+      "viewport": "Portada de informe: lockup OSCAR en grotesk, metadata fiscal 2026, banda vermillion a sangre, la cifra 7 a tamaño póster y CONTACT de lectura inmediata.",
+      "risk": "Riesgo honesto: seco y corporativo si las bandas no se comprometen a póster — el género exige disciplina, no timidez.",
+      "raised": [
+        {
+          "from": "challenger-rain-night-cityscape",
+          "raise": "NIGHT ROUTE — una sola ruta de luz conduce al visitante de la portada a la firma."
+        },
+        {
+          "from": "challenger-drawcord-cape",
+          "raise": "CORDÓN — un control maestro único rehace toda la composición (pliego expandido ↔ condensado)."
+        },
+        {
+          "from": "challenger-futurist-bolted-book",
+          "raise": "ZANG — cada sección con su propio volumen, ningún pliego compuesto igual, cifras escaladas por presión."
+        }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "kicker": "IMPECCABLE'S PICK",
+      "label": "Software Empaquetado '85–'95",
+      "lineage": "packaging de software en caja, 1985–95",
+      "thesis": "Tu trabajo es software en caja: el portfolio es el estante donde se fabricó, con lomo, flaps de specs y arte de portada.",
+      "palette": ["#2E1F13", "#D84218", "#F2B338", "#CBB593"],
+      "materials": ["cartón corrugado", "tintas planas", "tipografía de flaps"],
+      "viewport": "La caja frontal de OSCAR a sangre con el lomo visible al gutter; los proyectos como estante y el stack en los flaps.",
+      "risk": "Es donde más runs de esta categoría aterrizan: el packaging retro de dev es territorio conocido — familiar por diseño, con riesgo de parecer temática."
+    },
+    {
+      "id": "challenger-webgl-shader-portal",
+      "label": "Portal shader WebGL",
+      "verdict": "competitive",
+      "lineage": "portales de estudio experiential / WebGL",
+      "thesis": "Un shader a pantalla completa respira color mientras la interfaz vive como tipografía fina sobre píxeles vivos.",
+      "palette": ["#06171C", "#0E3B44", "#FF6A3D"],
+      "materials": ["fragment shader", "film grain"],
+      "viewport": "Escena shader a sangre, una palabra en display grotesk y labels minúsculos anclados a los márgenes.",
+      "case": "Gana identificación técnica (WebGL = prueba de craft); pierde claridad: el efecto subordina los artefactos.",
+      "risk": "Si el shader manda, la evidencia queda bajo el efecto y el reclutador escanea humo.",
+      "hero": "https://impeccable.style/worlds/cards/webgl-shader-portal-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/webgl-shader-portal.webp"
+    },
+    {
+      "id": "challenger-drum-machine-step-row",
+      "label": "Máquina de ritmos",
+      "verdict": "competitive",
+      "lineage": "step row de drum machine, 1982",
+      "thesis": "El portfolio como drum machine: secciones = patterns, proyectos = steps, tu scroll = la luz que barre.",
+      "palette": ["#26262A", "#D8402F", "#F4B942", "#F5F1E8"],
+      "materials": ["panel serigrafiado", "teclas candy ABS"],
+      "viewport": "Panel charcoal a sangre con la fila de 16 steps en colores candy y readout de tempo en rojo segmentado.",
+      "case": "Gana memoria y delight; pierde claridad: el lenguaje instrumento cuesta traducir bio, skills y contacto.",
+      "risk": "Cuando la máquina es más interesante que el contenido, el reclutador mira el instrumento y no al candidato.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-drum-machine-step-row-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/signals-instruments-drum-machine-step-row.webp"
+    },
+    {
+      "id": "challenger-streaming-title-card-wall",
+      "label": "Muro de title cards",
+      "verdict": "competitive",
+      "lineage": "muro de catálogo de streaming",
+      "thesis": "El portfolio como muro de catálogo: filas de pósteres donde el tile enfocado se abre y cuenta su ficha.",
+      "palette": ["#121212", "#1F1F1F", "#F5C518"],
+      "materials": ["obra a sangre", "estado de tile enfocado"],
+      "viewport": "Muro a sangre: filas horizontales de tiles 16:9, la fila activa levantándose mientras el resto se atenúa.",
+      "case": "Gana identificación (frontera diaria de todos); pierde claridad: la metadata vive tras el focus.",
+      "risk": "Es el grid de tarjetas con ropa de streaming: un paso mal tomado y vuelves al rut de la categoría.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-streaming-title-card-wall-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/pop-culture-shelf-streaming-title-card-wall.webp"
+    },
+    {
+      "id": "challenger-rain-night-cityscape",
+      "label": "Nocturno urbano lluvioso",
+      "verdict": "declined",
+      "lineage": "ciudad de hora azul a noche de lluvia",
+      "thesis": "Un nocturno urbano donde skyline, vetas de tránsito y reflejos mojados envuelven el portfolio.",
+      "palette": ["#0B1B33", "#0A0A0C", "#F2A93B", "#DDE7EE"],
+      "materials": ["asfalto mojado", "neón reflejado"],
+      "viewport": "Skyline a sangre, tránsito ámbar cosiendo el río, una fachada virando plata al alba.",
+      "case": "Pierde ambos ejes: la atmósfera no identifica al reclutador y el mood entierra la evidencia.",
+      "kept": "NIGHT ROUTE — una sola ruta de luz conduce al visitante.",
+      "risk": "El nocturno se vuelve wallpaper cuando no organiza los hechos."
+    },
+    {
+      "id": "challenger-drawcord-cape",
+      "label": "Capa drawcord",
+      "verdict": "declined",
+      "lineage": "moda transformable / sastrería",
+      "thesis": "Prenda que se transforma: tirar de un cordón dorado rehace toda la forma de un plano a costuras.",
+      "palette": ["#0C0B0A", "#C9A227", "#3A3B40", "#6E7076"],
+      "materials": ["seda mate", "canalillo de cordón"],
+      "viewport": "Semicírculo negro a sangre; el cordón dorado tira y la página se pliega en costuras.",
+      "case": "Pierde ambos ejes: el lenguaje de la sastrería es ajeno a la escena de contratación.",
+      "kept": "CORDÓN — un control maestro único que deforma toda la composición.",
+      "risk": "La metáfora textil no traduce hechos de software sin forzarla."
+    },
+    {
+      "id": "challenger-futurist-bolted-book",
+      "label": "Manifiesto futurista atornillado",
+      "verdict": "declined",
+      "lineage": "libro futurista atornillado, 1912",
+      "thesis": "Un libro de tinta wood-type a 15–45°, atornillado con dos pernos, leído a velocidad de motor.",
+      "palette": ["#EDE2CC", "#17130F", "#B92B18", "#9A958B"],
+      "materials": ["wood type", "tornillos de aluminio"],
+      "viewport": "Pliego diagonal con onomatopeyas escaladas por volumen y los dos tornillos siempre visibles.",
+      "case": "Pierde ambos ejes: la tipografía diagonal contradice el escaneo de menos de 60 segundos.",
+      "kept": "ZANG — cada sección con su propio volumen; ningún pliego igual.",
+      "risk": "Sin control de lectura, el grito cansa antes de convencer."
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "label": "El estándar de la categoría",
+    "thesis": "Lo que esta categoría siempre envía, ejecutado con craft impeccable.",
+    "palette": ["#FFFFFF", "#111827", "#2563EB"],
+    "materials": ["grid limpio", "pills de skills"],
+    "viewport": "El arreglo que un visitante espera, a craft completo.",
+    "risk": "Indistinguible de la competencia por diseño."
+  },
+  "steer": true
+}

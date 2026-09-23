@@ -1,100 +1,120 @@
-/* ==================== CSS Variables (Custom Properties) ==================== */
+/* ============================================================
+   Portal Shader — tokens + shell
+   Ground: void #06171C (dark) / warm field (light).
+   Ink inverts; ember #FF6A3D is constant in both scenes.
+   ============================================================ */
 
 :root {
-  /* Light Mode (por defecto) */
-  --bg-color: #ffffff;
-  --text-color: #2d3748;
-  --primary-color: #667eea;
-  --primary-dark: #764ba2;
-  --secondary-bg: #f8f9fa;
-  --border-color: #e2e8f0;
-  --hover-bg: #f0f2f5;
-  --focus-color: #667eea;
-  --shadow-color: rgba(0, 0, 0, 0.08);
-  --code-bg: #f4f4f4;
-  --text-secondary: #4a5568;
-  --text-tertiary: #718096;
+  --void: #06171c;
+  --teal: #0e3b44;
+  --ember: #ff6a3d;
+  --ember-ink: #1a0b05;
+  /* Ember as TEXT/state must clear 4.5:1 on the warm daylight field:
+     darkened here, vivid in the void scene. --ember-tint serves dark tiles. */
+  --ember-text: #b33a0b;
+  --ember-tint: #ffc9b3;
+  --warm-white: #f2ede4;
+  --warm-field: #f4eee3;
+  --warm-paper: #faf7f0;
 
-  /* Hero gradient específico para modo claro */
-  --hero-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  /* Navbar background (usa gradiente en claro, será override en dark) */
-  --navbar-bg: var(--hero-gradient);
+  /* Light scene = daylight field; dark scene = void field. */
+  --bg: var(--warm-field);
+  --ink: var(--void);
+  --muted: color-mix(in srgb, var(--ink) 70%, var(--bg));
+  --line: color-mix(in srgb, var(--ink) 15%, transparent);
+  --line-strong: color-mix(in srgb, var(--ink) 32%, transparent);
+  --panel: color-mix(in srgb, var(--bg) 88%, transparent);
+  --card-bg: color-mix(in srgb, var(--bg) 90%, #ffffff 10%);
 
-  /* Transición suave para el cambio de tema */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  --font: 'Archivo', system-ui, 'Segoe UI', sans-serif;
+
+  /* geometry */
+  --hair: 1px;
+  --r: 12px;
+  --r-sm: 8px;
+  --pill: 999px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --measure: 68ch;
+  --nav-h: 4rem;
+
+  /* type scale — display pinned to ~16vw by the direction contract */
+  --t-micro: 0.6875rem;
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-base: 1rem;
+  --t-md: clamp(1rem, 1.4vw, 1.25rem);
+  --t-lg: clamp(1.5rem, 3vw, 2rem);
+  --t-section: clamp(2.25rem, 5vw, 3.75rem);
+  --t-display: clamp(4rem, 16vw, 15rem);
+
+  /* one authored motion voice: exponential ease-out */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --snap: 0.16s;
+
+  /* depth: ember glow = offset-free halo — the world's incandescent material,
+     sanctioned only on the primary CTA (direction contract) */
+  --glow-ember:
+    0 0 22px rgba(255, 106, 61, 0.38),
+    0 0 0 1px rgba(255, 106, 61, 0.6);
 }
 
-/* Dark Mode */
-[data-theme="dark"] {
-  --bg-color: #1a202c;
-  --text-color: #e2e8f0;
-  --primary-color: #a0aec0;
-  --primary-dark: #cbd5e0;
-  --secondary-bg: #2d3748;
-  --border-color: #4a5568;
-  --hover-bg: #374151;
-  /* Hero gradient para modo oscuro */
-  --hero-gradient: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-  /* Navbar background in dark should match About section */
-  --navbar-bg: var(--secondary-bg);
-  --focus-color: #9f7aea;
-  --shadow-color: rgba(0, 0, 0, 0.3);
-  --code-bg: #2d3748;
-  --text-secondary: #cbd5e0;
-  --text-tertiary: #a0aec0;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  color-scheme: light dark;
+[data-theme='dark'] {
+  --bg: var(--void);
+  --ink: var(--warm-white);
+  --ember-text: var(--ember);
+  --panel: color-mix(in srgb, var(--void) 84%, transparent);
+  --card-bg: color-mix(in srgb, var(--void) 78%, var(--teal) 22%);
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--text-color);
-  background: var(--bg-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Prevent horizontal overflow on small screens */
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-/* Ensure images and media don't exceed their containers */
-img, picture, video {
-  max-width: 100%;
-  height: auto;
-  display: block;
+  transition:
+    background-color var(--snap) linear,
+    color var(--snap) linear;
 }
 
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background: transparent;
+  position: relative;
+  z-index: 1;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* Shared: uppercase tracked label voice (the margins speak in labels) */
+.label {
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.5;
 }
 
-button {
-  font-family: inherit;
+/* Shared: section-head device (DS-01) — the host's 1px top hairline carries a
+   central crosshair. Host must be position: relative with that border-top;
+   the glyph is decorative: absolute, pointer-events off, zero flow impact. */
+.head-rule::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -5px; /* centers the 9px glyph on the 1px hairline (padding-box origin) */
+  width: 9px;
+  height: 9px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background:
+    linear-gradient(var(--line-strong), var(--line-strong)) center / 1px 100% no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) center / 100% 1px no-repeat;
 }
 
-code {
-  background: var(--code-bg);
-  color: var(--text-color);
-  padding: 0.2rem 0.4rem;
-  border-radius: 3px;
-  font-family: 'Courier New', monospace;
-  transition: background-color 0.3s ease, color 0.3s ease;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }

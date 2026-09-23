@@ -1,88 +1,143 @@
-# Dark/Light Mode - Documentación de Implementación
+# Dark/Light Mode — Documentación de Implementación
 
-## 📋 Descripción General
+## Descripción general
 
-Se ha implementado un sistema completo de **Dark/Light Mode** en el portafolio utilizando:
-- **CSS Custom Properties** (Variables de CSS) para fácil mantenimiento
-- **React Hooks** personalizados para gestión de estado
-- **LocalStorage** para persistencia de preferencias del usuario
-- **Transiciones suaves** para una experiencia de usuario fluida
+El modo oscuro/claro del portal cambia la **escena**, no una paleta gris aparte:
+
+- **Light (default):** campo cálido `--warm-field` (`#F4EEE3`) con tinta void `#06171C`.
+- **Dark:** void `#06171C` con tinta warm-white `#F2EDE4`.
+- **Ember `#FF6A3D` es constante en ambas escenas** (CTA, estados, glow); como texto/estado sobre el campo cálido usa la variante `--ember-text` (`#B33A0B`) para sostener 4.5:1.
+
+El sistema se apoya en:
+
+- **CSS Custom Properties** en `src/App.css` (`:root` + `[data-theme='dark']`)
+- **El hook personalizado** `useTheme` (`src/hooks/useTheme.ts`) — inicialización, persistencia y aplicación del atributo
+- **`localStorage`** (clave `theme`) para recordar la preferencia
+- **Toggle en la nav** (`src/components/ThemeToggle.tsx`, montado dentro de `Navigation`)
+- **Transición corta** (`--snap`, `0.16s` linear): el cambio de escena se lee como un *flip*, no como un fundido
 
 ---
 
-## 🎨 Sistema de Variables CSS
+## Sistema de variables CSS
 
-### Modo Claro (Light Mode - por defecto)
+Fuente: `src/App.css`.
+
+### Escena light (por defecto, `:root`)
 
 ```css
 :root {
-  --bg-color: #ffffff;
-  --text-color: #2d3748;
-  --primary-color: #667eea;
-  --primary-dark: #764ba2;
-  --secondary-bg: #f8f9fa;
-  --border-color: #e2e8f0;
-  --hover-bg: #f0f2f5;
-  --focus-color: #667eea;
-  --shadow-color: rgba(0, 0, 0, 0.08);
-  --code-bg: #f4f4f4;
-  --text-secondary: #4a5568;
-  --text-tertiary: #718096;
+  --void: #06171c;
+  --teal: #0e3b44;
+  --ember: #ff6a3d;
+  --ember-ink: #1a0b05;
+  --ember-text: #b33a0b;   /* ember como texto/estado: 4.5:1 sobre el campo cálido */
+  --ember-tint: #ffc9b3;
+  --warm-white: #f2ede4;
+  --warm-field: #f4eee3;
+  --warm-paper: #faf7f0;
+
+  /* Light scene = daylight field; dark scene = void field. */
+  --bg: var(--warm-field);
+  --ink: var(--void);
+  --muted: color-mix(in srgb, var(--ink) 70%, var(--bg));
+  --line: color-mix(in srgb, var(--ink) 15%, transparent);
+  --line-strong: color-mix(in srgb, var(--ink) 32%, transparent);
+  --panel: color-mix(in srgb, var(--bg) 88%, transparent);
+  --card-bg: color-mix(in srgb, var(--bg) 90%, #ffffff 10%);
+  /* …tipografía, geometría y motion… */
 }
 ```
 
-### Modo Oscuro (Dark Mode)
+### Escena dark (`[data-theme='dark']`)
 
 ```css
-[data-theme="dark"] {
-  --bg-color: #1a202c;
-  --text-color: #e2e8f0;
-  --primary-color: #a0aec0;
-  --primary-dark: #cbd5e0;
-  --secondary-bg: #2d3748;
-  --border-color: #4a5568;
-  --hover-bg: #374151;
-  --focus-color: #9f7aea;
-  --shadow-color: rgba(0, 0, 0, 0.3);
-  --code-bg: #2d3748;
-  --text-secondary: #cbd5e0;
-  --text-tertiary: #a0aec0;
+[data-theme='dark'] {
+  --bg: var(--void);
+  --ink: var(--warm-white);
+  --ember-text: var(--ember);
+  --panel: color-mix(in srgb, var(--void) 84%, transparent);
+  --card-bg: color-mix(in srgb, var(--void) 78%, var(--teal) 22%);
 }
+```
+
+### Qué cambia y qué no
+
+| Token | Light | Dark |
+|---|---|---|
+| `--bg` / `--ink` | `#F4EEE3` / `#06171C` | `#06171C` / `#F2EDE4` |
+| `--ember-text` (estado, hover, rail activo, knob) | `#B33A0B` | `#FF6A3D` |
+| `--panel` / `--card-bg` | mezclas sobre `--bg` | mezclas explícitas sobre void/teal |
+| `--muted` / `--line` / `--line-strong` | derivados de `--ink`/`--bg` con `color-mix` → siguen el swap automáticamente | ídem |
+| `--ember`, `--ember-ink`, `--ember-tint`, `--teal`, `--warm-white`, `--warm-field`, `--warm-paper` | constantes | constantes |
+
+---
+
+## Superficies del navegador (`src/index.css`)
+
+Las partes que el CSS de componentes no dibuja se dibujan con ember sobre el tema actual:
+
+```css
+::selection { background: var(--ember); color: #1a0b05; }
+* { caret-color: var(--ember); }
+html { scrollbar-color: var(--line-strong) var(--bg); scrollbar-width: thin; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: var(--pill); border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--ember); }
+:focus-visible { outline: 2px solid var(--ember-text); outline-offset: 3px; }
+::placeholder { color: var(--muted); opacity: 1; }
 ```
 
 ---
 
-## 🪝 Custom Hook: useTheme
+## Otro consumidor del atributo: el campo WebGL
 
-### Ubicación
-`src/hooks/useTheme.ts`
+`src/components/ShaderField.tsx` no usa los tokens CSS, pero lee **el mismo atributo** `data-theme` para graduar la escena del shader:
 
-### Funcionalidades
+```ts
+const readDark = () => {
+  const v = document.documentElement.getAttribute('data-theme');
+  return v ? v === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+};
+```
+
+- Pasa el resultado al uniform `u_light` (`dark → 0`, `light → 1`) con interpolación suave en el loop.
+- Observa cambios con un `MutationObserver` (`attributeFilter: ['data-theme']`): el toggle re-gradúa el campo en vivo.
+- Fallback: si el atributo aún no existe, cae a `prefers-color-scheme`.
+
+---
+
+## Custom hook: `useTheme`
+
+**Ubicación:** `src/hooks/useTheme.ts`
 
 ```typescript
+type Theme = 'light' | 'dark';
+
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
-    // 1. Verifica localStorage
+    // Obtener tema del localStorage o del sistema
     const savedTheme = localStorage.getItem('theme') as Theme | null;
-    if (savedTheme) return savedTheme;
-    
-    // 2. Detecta preferencia del sistema
+    if (savedTheme) {
+      return savedTheme;
+    }
+
+    // Detectar preferencia del sistema
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       return 'dark';
     }
-    
-    // 3. Por defecto: light
+
     return 'light';
   });
 
   useEffect(() => {
-    // Aplica atributo data-theme al elemento HTML
-    document.documentElement.setAttribute('data-theme', theme);
-    
-    // Guarda en localStorage
+    // Aplicar tema al documento
+    const htmlElement = document.documentElement;
+    htmlElement.setAttribute('data-theme', theme);
+
+    // Guardar en localStorage
     localStorage.setItem('theme', theme);
-    
-    // Sincroniza color-scheme
+
+    // Actualizar color-scheme para campos de formulario
     document.documentElement.style.colorScheme = theme;
   }, [theme]);
 
@@ -94,21 +149,25 @@ export function useTheme() {
 }
 ```
 
-### Ventajas
+**Inicialización (orden exacto):**
 
-✅ Gestión centralizada del tema  
-✅ Persistencia en localStorage  
-✅ Respeta preferencias del sistema operativo  
-✅ Sincronización automática entre pestañas  
+1. `localStorage['theme']` existe → se usa ese valor.
+2. No existe → `prefers-color-scheme: dark` coincide → `'dark'`.
+3. Tampoco → `'light'`.
+
+**Efecto (en cada cambio de `theme`):**
+
+- Escribe `data-theme` en `<html>` (`document.documentElement`).
+- Persiste en `localStorage` bajo la clave `theme`.
+- Fija `document.documentElement.style.colorScheme = theme` (UI nativa: campos, scrollbar, etc.).
 
 ---
 
-## 🔘 Componente ThemeToggle
+## Componente `ThemeToggle`
 
-### Ubicación
-`src/components/ThemeToggle.tsx`
+**Ubicación:** `src/components/ThemeToggle.tsx` — renderizado en `Navigation` (contenedor `navActions`, junto al botón de menú).
 
-### Características
+Botón **sin etiqueta de texto** (sin `INV`, sin emojis): solo un SVG de un **anillo con la mitad rellena** (misma gramática circular que la marca del portal):
 
 ```tsx
 <button
@@ -117,192 +176,107 @@ export function useTheme() {
   aria-label={`Cambiar a modo ${theme === 'light' ? 'oscuro' : 'claro'}`}
   title={`Cambiar a modo ${theme === 'light' ? 'oscuro' : 'claro'}`}
 >
-  {theme === 'light' ? (
-    <span className={styles.icon}>🌙</span>
-  ) : (
-    <span className={styles.icon}>☀️</span>
-  )}
+  <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+    <circle cx="7" cy="7" r="5.6" fill="none" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M7 1.4 A5.6 5.6 0 0 1 7 12.6 Z" fill="currentColor" />
+  </svg>
 </button>
 ```
 
-### Accesibilidad (A11y)
+### Estilo (`ThemeToggle.module.css`)
 
-- ✅ `aria-label` dinámico para lectores de pantalla
-- ✅ `title` descriptivo al pasar el mouse
-- ✅ Touch target mínimo: 48x48px
-- ✅ `focus-visible` para navegación por teclado
-- ✅ Animación de rotación al cambiar
+- 34×34 px, borde `1px solid var(--line-strong)`, radio `var(--r-sm)`, tinta `var(--ink)`.
+- Hover: borde y color → `var(--ember-text)` (transiciones sobre `var(--snap)`).
+- Focus: el `:focus-visible` global de `index.css` (outline 2px `var(--ember-text)`, offset 3px); no hay glow propio.
 
-### Estilos
+### Accesibilidad
 
-```css
-.themeToggle {
-  background: var(--secondary-bg);
-  border: 2px solid var(--border-color);
-  color: var(--text-color);
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.25rem;
-  transition: all 0.3s ease;
-  min-width: 48px;
-  min-height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.themeToggle:hover {
-  background: var(--hover-bg);
-  border-color: var(--primary-color);
-  transform: scale(1.05);
-}
-
-.themeToggle:focus-visible {
-  outline: 3px solid var(--focus-color);
-  outline-offset: 2px;
-}
-```
+- `aria-label` y `title` dinámicos en español: *"Cambiar a modo oscuro/claro"*.
+- El SVG lleva `aria-hidden="true"`: el nombre accesible lo da el botón.
 
 ---
 
-## 🏗️ Integración en App.tsx
+## Integración
 
 ```tsx
-import { useTheme } from './hooks/useTheme'
-import ThemeToggle from './components/ThemeToggle'
-
+// App.tsx
 function App() {
-  useTheme() // Inicializa el tema
-
+  useTheme() // inicializa data-theme + persistencia + color-scheme
+  ...
   return (
     <div className="app">
-      <ThemeToggle />
-      {/* resto del contenido */}
-    </div>
-  )
-}
+      <ShaderField scene={active} />  {/* consume data-theme vía MutationObserver */}
+      ...
+      <Navigation active={active} />  {/* ThemeToggle vive dentro de la nav */}
+      ...
 ```
 
 ---
 
-## 🎯 Uso en Componentes
+## Inversión en la página
 
-### Todos los componentes utilizan variables CSS
+Dado que todo usa `--bg`/`--ink` (y derivados por `color-mix`), el cambio de escena es automático en cada componente:
 
-```css
-/* Ejemplos en los estilos */
-.navbar {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  box-shadow: 0 2px 8px var(--shadow-color);
-}
+| Superficie | Light | Dark |
+|---|---|---|
+| `body` / página | campo cálido `#F4EEE3`, tinta void | void `#06171C`, tinta warm-white |
+| Nav / secciones (`--panel`) | mezcla clara translúcida sobre `--bg` | mezcla oscura sobre void + teal |
+| Tarjetas de proyecto (`--card-bg`) | `--bg` + 10% blanco | void + 22% teal |
+| Estados hover, rail 01–04 activo, knob del readout (`--ember-text`) | `#B33A0B` | `#FF6A3D` |
+| CTA CONTACT, selección, caret, scrollbar hover (`--ember`) | `#FF6A3D` | `#FF6A3D` (constante) |
+| Campo WebGL | `u_light → 1` (escena cálida) | `u_light → 0` (void) |
 
-.card {
-  background: var(--secondary-bg);
-  color: var(--text-color);
-  box-shadow: 0 4px 15px var(--shadow-color);
-}
-
-.link {
-  color: var(--primary-color);
-}
-
-.link:hover {
-  color: var(--primary-dark);
-}
-```
+Los componentes están escritos con `var(--ink)` / `var(--bg)` / derivados — **nunca con hex sueltos** — por lo que el cambio de escena no requiere reglas adicionales por componente.
 
 ---
 
-## ⚡ Transiciones Suaves
+## Transiciones
 
 ```css
-/* Transición global en :root */
-:root {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Body también tiene transición */
+/* App.css */
 body {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color var(--snap) linear,
+    color var(--snap) linear;
 }
+/* --snap: 0.16s; un solo easing en todo el mundo: cubic-bezier(0.16, 1, 0.3, 1) */
 ```
 
-**Duración:** 0.3 segundos  
-**Función de tiempo:** ease (suave)
+Corta y lineal a propósito: la inversión se lee como el **momento de estado** de un portal, no como un fundido. Bajo `prefers-reduced-motion: reduce`, `index.css` fuerza `transition-duration: 0.01ms !important`, así que el cambio de tema es inmediato.
 
 ---
 
-## 🔍 Flujo de Funcionamiento
+## Flujo de funcionamiento
 
 ```
-1. Usuario abre la aplicación
+1. El usuario abre la app
    ↓
-2. useTheme() verifica localStorage
-   ├─ Si existe guardado → Usa ese valor
-   └─ Si no → Detecta preferencia del sistema
+2. useTheme() inicializa el estado
+   ├─ localStorage['theme'] existe → úsalo
+   └─ si no → prefers-color-scheme (dark → 'dark', si no → 'light')
    ↓
-3. Se aplica atributo data-theme al <html>
+3. useEffect (al montar y en cada cambio):
+   escribe data-theme en <html>, persiste en localStorage y fija color-scheme
    ↓
-4. CSS :root y [data-theme="dark"] actualizan variables
+4. :root / [data-theme='dark'] intercambian --bg ↔ --ink (y --ember-text, --panel, --card-bg);
+   --muted/--line/--line-strong los siguen por color-mix; --ember es constante
    ↓
-5. Todos los elementos transicionan suavemente
+5. body transiciona background-color/color en 0.16s; el campo WebGL re-gradúa
+   u_light vía MutationObserver sobre data-theme
    ↓
-6. Usuario hace click en ThemeToggle
-   ↓
-7. Se ejecuta toggleTheme()
-   ↓
-8. Se guarda en localStorage
-   ↓
-9. Los cambios persisten en próximas visitas
+6. El usuario pulsa el toggle de la nav → toggleTheme() → persiste para próximas visitas
 ```
 
 ---
 
-## 🌐 Soporte del Navegador
+## Privacidad
 
-✅ Chrome/Edge 49+  
-✅ Firefox 31+  
-✅ Safari 9.1+  
-✅ Opera 36+  
-✅ IE: No soportado (usa fallback a light mode)
+- Solo `localStorage` del usuario (clave `theme`); sin datos a servidores, sin tracking ni analytics.
 
 ---
 
-## 🎨 Palette de Colores
+## Notas
 
-| Variable | Light Mode | Dark Mode |
-|----------|-----------|-----------|
-| bg-color | #ffffff | #1a202c |
-| text-color | #2d3748 | #e2e8f0 |
-| primary-color | #667eea | #a0aec0 |
-| secondary-bg | #f8f9fa | #2d3748 |
-| border-color | #e2e8f0 | #4a5568 |
-
----
-
-## 📱 Responsive
-
-- ✅ Botón ThemeToggle se ajusta en móvil
-- ✅ Touch targets mínimos de 48x48px
-- ✅ Transiciones funcionan en todos los dispositivos
-- ✅ Persiste preferencia en móvil
-
----
-
-## 🔐 Privacidad
-
-- No se envían datos a servidores
-- Solo se guarda en localStorage del usuario
-- Completamente offline-first
-- Sin tracking o analytics
-
----
-
-## 📝 Notas
-
-- El tema se aplica instantáneamente al cargar
-- Las transiciones son suaves pero no ralentizan
-- Compatible con lectores de pantalla
-- Soporta cambios de preferencia del SO en tiempo real
-
+- `data-theme` se escribe en el montaje (useEffect de React); hasta ese momento `<html>` exhibe los valores de `:root` (escena light).
+- Cambios de preferencia del SO entre visitas: si el usuario ya usó el toggle, su elección guardada gana sobre el SO.
+- `ShaderField` tiene su propio fallback a `prefers-color-scheme` para el caso en que el atributo `data-theme` aún no exista.

@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Impeccable evidence: heavy binaries stay local
+.impeccable/review/
+.impeccable/*.webp

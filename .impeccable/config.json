@@ -1,0 +1,10 @@
+{
+  "detector": {
+    "ignoreRules": [
+      "dark-glow",
+      "all-caps-body"
+    ],
+    "ignoreFiles": [],
+    "ignoreValues": []
+  }
+}
