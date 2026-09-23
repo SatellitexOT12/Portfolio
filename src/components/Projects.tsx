@@ -87,6 +87,7 @@ const YEARS: Record<number, string> = {
   4: '2026',
   5: '2024',
   6: '2025',
+  7: '2026',
 };
 
 /* ROLE: every listed module is Oscar's delivered work. */
