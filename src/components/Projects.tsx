@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import styles from './Projects.module.css';
 
 interface Project {
@@ -8,7 +8,7 @@ interface Project {
   technologies: string[];
   image?: string;
   link: string;
-  /** Optional direct link to the deployed site — rendered as its own foot action. */
+  /** Optional direct link to the deployed site â€” rendered as its own foot action. */
   liveLink?: string;
 }
 
@@ -74,7 +74,7 @@ const projectsData: Project[] = [
       'An immersive AR mobile application built with Unity and Vuforia Engine to visualize and preserve naval heritage through interactive 3D historical ship models.',
     technologies: ['Unity', 'Vuforia Engine', 'Blender', 'C#'],
     link: 'https://github.com/SatellitexOT12/RA_Barcos',
-    image: 'ar-ships.webp',
+    image: 'ar-ships.png',
   },
 ];
 
@@ -92,7 +92,7 @@ const YEARS: Record<number, string> = {
 /* ROLE: every listed module is Oscar's delivered work. */
 const ROLE = 'Developer';
 
-/* Fallback tile initials — no external placeholder ever renders. */
+/* Fallback tile initials â€” no external placeholder ever renders. */
 function initialsOf(title: string): string {
   return title
     .split(/\s+/)
@@ -116,11 +116,11 @@ export default function Projects() {
   return (
     <section id="projects" className={`${styles.projects} head-rule`}>
       <span className={styles.edgeLabel} aria-hidden="true">
-        MESH · DENSE
+        MESH Â· DENSE
       </span>
       <div className={styles.head}>
         <h2 className={styles.title}>Projects</h2>
-        <p className={styles.meta}>{String(projectsData.length).padStart(2, '0')} · Selected work</p>
+        <p className={styles.meta}>{String(projectsData.length).padStart(2, '0')} Â· Selected work</p>
       </div>
 
       <div className={styles.grid}>
@@ -173,7 +173,7 @@ export default function Projects() {
                 (no nested <a>) while the foot spans the full card width. */}
             <div className={styles.foot}>
               <span className={styles.spec}>
-                {YEARS[project.id] ?? '20XX'} · {ROLE}
+                {YEARS[project.id] ?? '20XX'} Â· {ROLE}
               </span>
               <span className={styles.actions}>
                 <a className={styles.action} href={project.link} target="_blank" rel="noreferrer">
@@ -203,3 +203,4 @@ export default function Projects() {
     </section>
   );
 }
+
