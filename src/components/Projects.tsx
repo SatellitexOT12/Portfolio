@@ -38,7 +38,7 @@ const projectsData: Project[] = [
       'A modern storefront for a handcrafted dessert brand, focused on premium product presentation, mobile-friendly browsing, and a clean ordering experience.',
     technologies: ['React', 'TypeScript', 'Vite', 'CSS Modules', 'E-commerce'],
     link: 'https://mininabi.qzz.io/',
-    image: 'https://vfomcuyjibpbkistjhpd.supabase.co/storage/v1/object/public/pics/LogoMN.webp',
+    image: 'mininabi.webp',
   },
   {
     id: 4,
