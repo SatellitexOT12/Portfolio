@@ -78,9 +78,16 @@ const projectsData: Project[] = [
   },
 ];
 
-/* YEAR: real for the jam entries (stated in their copy); 20XX is the
-   marked placeholder where no year exists in the source truth. */
-const YEARS: Record<number, string> = { 5: '2024', 6: '2025' };
+/* YEAR: user-confirmed ship years; 20XX is the marked placeholder
+   where no year exists in the source truth (AR Ships). */
+const YEARS: Record<number, string> = {
+  1: '2025',
+  2: '2024',
+  3: '2026',
+  4: '2026',
+  5: '2024',
+  6: '2025',
+};
 
 /* ROLE: every listed module is Oscar's delivered work. */
 const ROLE = 'Developer';
