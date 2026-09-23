@@ -8,6 +8,8 @@ interface Project {
   technologies: string[];
   image?: string;
   link: string;
+  /** Optional direct link to the deployed site — rendered as its own foot action. */
+  liveLink?: string;
 }
 
 const projectsData: Project[] = [
@@ -18,7 +20,8 @@ const projectsData: Project[] = [
       'A full-stack university maintenance management system designed to streamline incident reporting and centralize technical support workflows.',
     technologies: ['Django', 'JavaScript', 'PostgreSQL', 'Bootstrap'],
     link: 'https://github.com/SatellitexOT12/ProyectoMantenimientoUCI',
-    image: 'incident-management.webp',
+    liveLink: 'https://proyecto-mantenimiento-kzofm1w5n-antivist1.vercel.app',
+    image: 'sgum-uci.webp',
   },
   {
     id: 2,
@@ -44,7 +47,7 @@ const projectsData: Project[] = [
       'A high-performance personal portfolio designed with a mobile-first approach, focusing on clean architecture, optimized asset loading, and responsive UI components.',
     technologies: ['React', 'TypeScript', 'Vite', 'CSS Modules'],
     link: 'https://github.com/SatellitexOT12/Portfolio',
-    image: 'personal-portfolio.webp',
+    image: 'portfolio-shot.webp',
   },
   {
     id: 5,
@@ -156,19 +159,37 @@ export default function Projects() {
                     </li>
                   ))}
                 </ul>
-                <div className={styles.foot}>
-                  <span className={styles.spec}>
-                    {YEARS[project.id] ?? '20XX'} · {ROLE}
-                  </span>
-                  <span className={styles.action}>
-                    Open
+              </div>
+            </a>
+
+            {/* Sibling of the card link: keeps every anchor standalone
+                (no nested <a>) while the foot spans the full card width. */}
+            <div className={styles.foot}>
+              <span className={styles.spec}>
+                {YEARS[project.id] ?? '20XX'} · {ROLE}
+              </span>
+              <span className={styles.actions}>
+                <a className={styles.action} href={project.link} target="_blank" rel="noreferrer">
+                  Open
+                  <svg className={styles.arrow} width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                    <path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  </svg>
+                </a>
+                {project.liveLink && (
+                  <a
+                    className={`${styles.action} ${styles.actionLive}`}
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Live
                     <svg className={styles.arrow} width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
                       <path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8" fill="none" stroke="currentColor" strokeWidth="1.5" />
                     </svg>
-                  </span>
-                </div>
-              </div>
-            </a>
+                  </a>
+                )}
+              </span>
+            </div>
           </article>
         ))}
       </div>
