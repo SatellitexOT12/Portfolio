@@ -117,7 +117,7 @@ export default function Projects() {
   return (
     <section id="projects" className={`${styles.projects} head-rule`}>
       <span className={styles.edgeLabel} aria-hidden="true">
-        MESH Â· DENSE
+        MESH · DENSE
       </span>
       <div className={styles.head}>
         <h2 className={styles.title}>Projects</h2>
